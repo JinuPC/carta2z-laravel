@@ -54,9 +54,7 @@ return [
 
 	'locale' => 'en',
 
-    'locales' => [ 'en' => 'English', 'hi' => 'Hindi', 'fr' => 'French', 'de' => 'German', 'el' => 'Greek', 'it' => 'Italian', 'ja' => 'Japanese', 'ar' => 'Arabic' ],
-
-    /*
+	/*
 	|--------------------------------------------------------------------------
 	| Application Fallback Locale
 	|--------------------------------------------------------------------------
