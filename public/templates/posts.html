@@ -1,0 +1,338 @@
+<section class="content-header">
+	<h1>
+		Programs
+	</h1>
+</section>
+
+<section class="content" ng-show="views.list">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-if="userRole == 'admin' || ( userRole == 'seller' && acive == '1' )" ng-click="changeView('add')" class="btn btn-success pull-right">Add Program</a>
+			<a ng-if="userRole == 'admin' || ( userRole == 'seller' && acive == '1' )" ng-click="pageChangedPending(1)" class="btn btn-warning pull-right">Pending Programs</a>
+			<a ng-if="userRole == 'admin' || ( userRole == 'seller' && acive == '1' )" ng-click="pageChanged(1)" class="btn btn-primary pull-right">Approved Programs</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">All Programs</h3>
+					<div class="box-tools">
+						<div class="input-group pull-right">
+							<input type="text" ng-model="searchText.text" class="form-control input-sm pull-right" placeholder="Search"> 
+						</div>
+					</div>
+				</div>
+				<div class="box-body table-responsive post-list">
+					<ul>
+						<li dir-paginate="post in posts | filter:searchText.text | itemsPerPage:20" total-items="totalItems">
+							<a ng-click="read(post.id)">
+								<h3>{{post.title}}</h3>
+								<span class="pull-right"><i class="ion-ios-person"></i> Vendor: {{post.username}}</span>
+								<div>{{post.content | htmlToText | limitTo:300 }}</div>
+							</a>
+						</li>
+						<li ng-show="!posts.length"><span class="noTableData" colspan="6">No Programs Yet!</span></li>
+					</ul>
+					<dir-pagination-controls class="pagination-wrap" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.manage">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-if="userRole == 'admin' || ( userRole == 'seller' && acive == '1' )" ng-click="changeView('add')" class="btn btn-success pull-right">Add Program</a>
+			<a ng-if="userRole == 'admin' || ( userRole == 'seller' && acive == '1' )" ng-click="pageChangedPending(1)" class="btn btn-warning pull-right">Pending Programs</a>
+			<a ng-click="changeView('list')" class="btn btn-default pull-right">All Programs</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Approved Programs</h3>
+					<div class="box-tools">
+						<div class="input-group pull-right">
+							<input type="text" ng-model="searchText.text" class="form-control input-sm pull-right" placeholder="Search"> 
+						</div>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-hover middle">
+						<tbody>
+							<tr>
+								<th>Title</th>
+								<th>Name</th>
+								<th>Type</th>
+								<th>Status</th>
+								<th class='no-print'>Operations</th>
+							</tr>
+							<tr dir-paginate="post in postsApproved | filter:searchText.text | itemsPerPage:20" total-items="totalItems">
+								<td>{{post.title}}</td>
+								<td>{{post.name}}</td>
+								<td>{{post.type}}</td>
+								<td>{{post.status}}</td>
+								<td class='no-print'>
+									<a ng-click="read(post.id)" class="btn btn-success" title="View" tooltip><i class="ion-eye"></i></a>
+									<a ng-if="userRole == 'admin'" ng-click="deny(post.id)" class="btn btn-info" title="To Pending" tooltip><i class="ion-close"></i></a>
+									<a ng-if="userRole == 'admin' || userRole == 'seller'" ng-click="edit(post)" class="btn btn-warning" title="Edit" tooltip><i class="ion-edit"></i></a>
+									<a ng-if="userRole == 'admin'" ng-click="remove(post,$index)" class="btn btn-danger" title="Delete" tooltip><i class="ion-trash-b"></i></a>
+								</td>
+							</tr>
+							<tr ng-show="!postsApproved.length"><td class="noTableData" colspan="6">No Approved Programs</td></tr>
+						</tbody>
+					</table>
+					<dir-pagination-controls class="pagination-wrap" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.approval">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-if="userRole == 'admin' || ( userRole == 'seller' && acive == '1' )" ng-click="changeView('add')" class="btn btn-success pull-right">Add Programs</a>
+			<a ng-if="userRole == 'admin' || ( userRole == 'seller' && acive == '1' )" ng-click="pageChanged(1)" class="btn btn-primary pull-right">Approved Programs</a>
+			<a ng-click="changeView('list')" class="btn btn-default pull-right">All Programs</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Pending Programs</h3>
+					<div class="box-tools">
+						<div class="input-group pull-right">
+							<input type="text" ng-model="searchText.text" class="form-control input-sm pull-right" placeholder="Search"> 
+						</div>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-hover middle">
+						<tbody>
+							<tr>
+								<th>Title</th>
+								<th>Name</th>
+								<th>Type</th>
+								<th>Status</th>
+								<th class='no-print'>Operations</th>
+							</tr>
+							<tr dir-paginate="post in postsPending | filter:searchText.text | itemsPerPage:20" total-items="totalItems">
+								<td>{{post.title}}</td>
+								<td>{{post.name}}</td>
+								<td>{{post.type}}</td>
+								<td>{{post.status}}</td>
+								<td class='no-print'>
+									<a ng-click="read(post.id)" class="btn btn-success" title="View" tooltip><i class="ion-eye"></i></a>
+									<a ng-if="userRole == 'admin'" ng-click="approve(post.id)" class="btn btn-info" title="Approve" tooltip><i class="ion-checkmark"></i></a>
+									<a ng-if="userRole == 'admin' || userRole == 'seller'" ng-click="edit(post)" class="btn btn-warning" title="Edit" tooltip><i class="ion-edit"></i></a>
+									<a ng-if="userRole == 'admin'" ng-click="remove(post,$index)" class="btn btn-danger" title="Delete" tooltip><i class="ion-trash-b"></i></a>
+								</td>
+							</tr>
+							<tr ng-show="!postsPending.length"><td class="noTableData" colspan="6">No Pending Programs</td></tr>
+						</tbody>
+					</table>
+					<dir-pagination-controls class="pagination-wrap" on-page-change="pageChangedPending(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.add">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-click="changeView('list')" class="btn btn-danger pull-right">Cancel</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Add Program</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<form class="form-horizontal col-md-12" ng-submit="create()" name="addPost" role="form" novalidate>
+						<div class="form-group" ng-class="{'has-error': addPost.title.$invalid}">
+							<label for="title" class="col-sm-2 control-label">Title * </label>
+							<div class="col-sm-10">
+								<input type="text" name="title" ng-model="form.title" class="form-control" required placeholder="Programs Title">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': addPost.name.$invalid}">
+							<label for="name" class="col-sm-2 control-label">Name * </label>
+							<div class="col-sm-10">
+								<input type="text" name="name" ng-model="form.name" class="form-control" required placeholder="Unique Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="content" class="col-sm-2 control-label">Program Description</label>
+							<div class="col-sm-10">
+								<textarea ck-editor name="content" class="form-control" ng-model="form.content"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group" ng-class="{'has-error': addPost.price.$invalid}">
+									<label for="price" class="col-sm-4 control-label">Program Cost * </label>
+									<div class="col-sm-8">
+										<input type="text" name="price" ng-model="form.price" class="form-control" required placeholder="Price of Program">
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group" ng-class="{'has-error': addPost.mode.$invalid}">
+									<label class="col-sm-3 control-label" ng-repeat="mode in modes">
+										<input type="radio" name="mode" ng-model="form.mode" value="{{mode}}"> {{mode}}
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': addPost.type.$invalid}">
+							<label for="type" class="col-sm-2 control-label">Program Type * </label>
+							<div class="col-sm-10">
+								<select class="form-control" name="type" ng-model="form.type" required>
+									<option ng-repeat="type in programTypes" value="{{type}}">{{type}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Locations</label>
+							<div class="col-sm-10">
+								<label class="checkbox-inline" ng-repeat="location in allLocations"><input type="checkbox" ng-model="location.check" value="{{location.name}}">{{location.name}}</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="hidden" name="_token" value="{{CSRF_TOKEN}}">
+								<button type="submit" class="btn btn-success" ng-disabled="addPost.$invalid">Publish</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.edit">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-click="changeView('list')" class="btn btn-danger pull-right">Cancel</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Edit program <em>{{name}}</em></h3>
+				</div>
+				<div class="box-body table-responsive">
+					<form class="form-horizontal col-md-12" ng-submit="saveEdit()" name="editPost" role="form" novalidate>
+						<div class="form-group" ng-class="{'has-error': editPost.title.$invalid}">
+							<label for="title" class="col-sm-2 control-label">Title * </label>
+							<div class="col-sm-10">
+								<input type="text" name="title" ng-model="form.title" class="form-control" required placeholder="Programs Title">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': editPost.name.$invalid}">
+							<label for="name" class="col-sm-2 control-label">Name * </label>
+							<div class="col-sm-10">
+								<input type="text" name="name" ng-model="form.name" class="form-control" required placeholder="Unique Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="content" class="col-sm-2 control-label">Program Description</label>
+							<div class="col-sm-10">
+								<textarea ck-editor name="content" class="form-control" ng-model="form.content"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group" ng-class="{'has-error': editPost.price.$invalid}">
+									<label for="price" class="col-sm-4 control-label">Program Cost * </label>
+									<div class="col-sm-8">
+										<input type="text" name="price" ng-model="form.price" class="form-control" required placeholder="Price of Program">
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group" ng-class="{'has-error': editPost.mode.$invalid}">
+									<label class="col-sm-3 control-label" ng-repeat="mode in modes">
+										<input type="radio" name="mode" ng-model="form.mode" value="{{mode}}"> {{mode}}
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': editPost.type.$invalid}">
+							<label for="type" class="col-sm-2 control-label">Program Type * </label>
+							<div class="col-sm-10">
+								<select class="form-control" name="type" ng-model="form.type" required>
+									<option ng-repeat="type in programTypes" value="{{type}}">{{type}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Locations</label>
+							<div class="col-sm-10">
+								<label class="checkbox-inline" ng-repeat="location in allLocations"><input type="checkbox" ng-model="location.check" value="{{location.name}}">{{location.name}}</label>
+							</div>
+						</div>
+						<div class="form-group" ng-if="userRole == 'admin'">
+							<label for="status" class="col-sm-2 control-label">Status</label>
+							<div class="col-sm-3">
+								<select class="form-control" name="status" ng-model="form.status" >
+									<option ng-repeat="status in statuses" value="{{status}}">{{status}}</option>
+								</select> 
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="hidden" name="_token" value="{{CSRF_TOKEN}}">
+								<button type="submit" class="btn btn-success" ng-disabled="editPost.$invalid">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.read">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-click="changeView('list')" class="btn btn-default pull-right"><i class="ion-arrow-return-left"></i> Back</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box single-post">
+				<div class="box-body table-responsive post-content">
+					<h2 class="title"><span>{{post.title}}</span></h2>
+					<div class="post-meta">
+						<span class="pull-right">Published On: {{ post.created_at | date :'dd-MMM-yyyy'}}</span>
+					</div>
+					<h3 class="price">{{post.price}}</h3>
+					<div class="payment">
+						<div class="mode">Payment Method: <span>{{post.mode}}</span></div>
+						<div class="actions">
+							<a class="btn btn-primary btn-lg btn-block" title="Demo" tooltip><i class="ion-paper-airplane"></i>Apply Now</a>
+							<a class="btn btn-default btn-lg btn-block" title="Demo" tooltip><i class="ion-heart"></i>Wish to Join</a>
+						</div>
+					</div>
+					<div class="locations">Locations:
+						<span ng-repeat="loc in post.locations" ng-if="loc.check == true">{{loc.name}}</span>
+					</div>
+					<div class="vendor">Vendor: <span>{{post.username}}</span></div>
+					<div class="desc-title">Description</div>
+					<div class="desc" ng-bind-html="post.content"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

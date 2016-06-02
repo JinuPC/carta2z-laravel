@@ -1,0 +1,110 @@
+<section class="content-header">
+	<h1>
+		Profile
+	</h1>
+</section>
+
+<section class="content" ng-show="views.list">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-click="changeView('edit')" class="btn btn-warning pull-right">Edit</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">My profile details</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-hover">
+						<tbody>
+							<tr>
+								<td>ID</td>
+								<th>{{user.user_id}}</th>
+							</tr>
+							<tr>
+								<td>Username</td>
+								<th>{{user.username}}</th>
+							</tr>
+							<tr>
+								<td>Fist Name</td>
+								<th>{{user.first_name}}</th>
+							</tr>
+							<tr>
+								<td>Last Name</td>
+								<th>{{user.last_name}}</th>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<th>{{user.email}}</th>
+							</tr>
+							<tr>
+								<td>Tin Number</td>
+								<th>{{user.tin_no}}</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.edit">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-click="changeView('list')" class="btn btn-danger pull-right">Cancel</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Edit my profile</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<form class="form-horizontal col-md-12" ng-submit="saveEdit()" name="editProfile" role="form" novalidate>
+						<div class="form-group" ng-class="{'has-error': editProfile.name.$invalid}">
+							<label for="name" class="col-sm-2 control-label">Name * </label>
+							<div class="col-sm-10">
+								<input type="text" name="name" ng-model="form.name" class="form-control" required placeholder="Full Name">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': editProfile.username.$invalid}">
+							<label for="username" class="col-sm-2 control-label">Username * </label>
+							<div class="col-sm-10">
+								<input type="text" name="username" ng-model="form.username" class="form-control" required placeholder="Username">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': editProfile.email.$invalid}">
+							<label for="email" class="col-sm-2 control-label">Email *</label>
+							<div class="col-sm-10">
+								<input type="email" name="email" ng-model="form.email" class="form-control" placeholder="Email" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-sm-2 control-label">Password</label>
+							<div class="col-sm-10">
+								<input type="password" name="password" ng-model="form.password" ng-minlength="6" class="form-control" placeholder="Password">
+								<small>Leave blank to not change</small>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-sm-2 control-label">Repeat Password</label>
+							<div class="col-sm-10">
+								<input type="password" name="password_confirmation" ng-model="form.password_confirmation" class="form-control" placeholder="Password Confirmation">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="hidden" name="_token" value="{{CSRF_TOKEN}}">
+								<button type="submit" class="btn btn-success" ng-disabled="editProfile.$invalid">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

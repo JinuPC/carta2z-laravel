@@ -1,0 +1,221 @@
+<section class="content-header">
+	<h1>
+		Sellers
+	</h1>
+</section>
+
+<section class="content" ng-show="views.list">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-if="userRole == 'admin'" ng-click="changeView('add')" class="btn btn-success pull-right">Add Seller</a>
+			<a ng-if="userRole == 'admin'" ng-click="pageChangedPending(1)" class="btn btn-warning pull-right">Pending Approval</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Approved Sellers</h3>
+					<div class="box-tools">
+						<div class="input-group pull-right">
+							<input type="text" ng-model="searchText.text" class="form-control input-sm pull-right" placeholder="Search"> 
+						</div>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-hover middle">
+						<tbody>
+							<tr>
+								<th>ID</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>username</th>
+								<th>email</th>
+								<th>Role</th>
+								<th class='no-print' ng-if="userRole == 'admin'">Operations</th>
+							</tr>
+							<tr dir-paginate="seller in sellers | filter:searchText.text | itemsPerPage:20" total-items="totalItems">
+								<td>{{seller.user_id}}</td>
+								<td>{{seller.firstname}}</td>
+								<td>{{seller.lastname}}
+								<td>{{seller.username}}</td>
+								<td>{{seller.email}}</td>
+								<td>{{seller.role}}</td>
+								<td class='no-print' ng-if="userRole == 'admin'">
+									<a ng-click="deny(seller.user_id)" class="btn btn-info" title="Dispprove" tooltip><i class="ion-close"></i></a>
+									<a ng-click="edit(seller)" class="btn btn-warning" title="Edit" tooltip><i class="ion-edit"></i></a>
+									<a ng-click="remove(seller,$index)" class="btn btn-danger" title="Delete" tooltip><i class="ion-trash-b"></i></a>
+								</td>
+							</tr>
+							<tr ng-show="!sellers.length"><td class="noTableData" colspan="6">No Approved Sellers</td></tr>
+						</tbody>
+					</table>
+					<dir-pagination-controls class="pagination-wrap" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.approval">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-if="userRole == 'admin'" ng-click="changeView('add')" class="btn btn-success pull-right">Add Seller</a>
+			<a ng-if="userRole == 'admin'" ng-click="pageChanged(1)" class="btn btn-primary pull-right">Approvaed Sellers</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Pending Sellers</h3>
+					<div class="box-tools">
+						<div class="input-group pull-right">
+							<input type="text" ng-model="searchText.text" class="form-control input-sm pull-right" placeholder="Search"> 
+						</div>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-hover middle">
+						<tbody>
+							<tr>
+								<th>ID</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>username</th>
+								<th>email</th>
+								<th>Role</th>
+								<th class='no-print' ng-if="userRole == 'admin'">Operations</th>
+							</tr>
+							<tr dir-paginate="seller in sellersPending | filter:searchText.text | itemsPerPage:20" total-items="totalItems">
+								<td>{{seller.user_id}}</td>
+								<td>{{seller.firstname}}</td>
+								<td>{{seller.lastname}}</td>
+								<td>{{seller.username}}</td>
+								<td>{{seller.email}}</td>
+								<td>{{seller.role}}</td>
+								<td class='no-print'  ng-if="userRole == 'admin'">
+									<a ng-click="approve(seller.user_id)" class="btn btn-info" title="Approve" tooltip><i class="ion-checkmark"></i></a>
+									<a ng-click="edit(seller)" class="btn btn-warning" title="Edit" tooltip><i class="ion-edit"></i></a>
+									<a ng-click="remove(seller,$index)" class="btn btn-danger" title="Delete" tooltip><i class="ion-trash-b"></i></a>
+								</td>
+							</tr>
+							<tr ng-show="!sellersPending.length"><td class="noTableData" colspan="6">No Pending Sellers</td></tr>
+						</tbody>
+					</table>
+					<dir-pagination-controls class="pagination-wrap" on-page-change="pageChangedPending(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.add">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-click="changeView('list')" class="btn btn-danger pull-right">Cancel</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Add Seller</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<form class="form-horizontal col-md-12" ng-submit="create()" name="addSeller" role="form" novalidate>
+						<div class="form-group" ng-class="{'has-error': addSeller.name.$invalid}">
+							<label for="name" class="col-sm-2 control-label">Name * </label>
+							<div class="col-sm-10">
+								<input type="text" name="name" ng-model="form.name" class="form-control" required placeholder="Full Name">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': addSeller.username.$invalid}">
+							<label for="username" class="col-sm-2 control-label">Username * </label>
+							<div class="col-sm-10">
+								<input type="text" name="username" ng-model="form.username" class="form-control" required placeholder="Username">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': addSeller.email.$invalid}">
+							<label for="email" class="col-sm-2 control-label">Email *</label>
+							<div class="col-sm-10">
+								<input type="email" name="email" ng-model="form.email" class="form-control" placeholder="Email" required>
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': addSeller.password.$invalid}">
+							<label for="password" class="col-sm-2 control-label">Password *</label>
+							<div class="col-sm-10">
+								<input type="password" name="password" ng-model="form.password" ng-minlength="6" class="form-control" required placeholder="Password">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="hidden" name="_token" value="{{CSRF_TOKEN}}">
+								<button type="submit" class="btn btn-success" ng-disabled="addSeller.$invalid">Add Seller</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content" ng-show="views.edit">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-click="changeView('list')" class="btn btn-danger pull-right">Cancel</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Edit <em>{{user}}</em>'s profile</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<form class="form-horizontal col-md-12" ng-submit="saveEdit()" name="editSeller" role="form" novalidate>
+						<div class="form-group" ng-class="{'has-error': editSeller.name.$invalid}">
+							<label for="name" class="col-sm-2 control-label">Name * </label>
+							<div class="col-sm-10">
+								<input type="text" name="name" ng-model="form.name" class="form-control" required placeholder="Full Name">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': editSeller.username.$invalid}">
+							<label for="username" class="col-sm-2 control-label">Username * </label>
+							<div class="col-sm-10">
+								<input type="text" name="username" ng-model="form.username" class="form-control" required placeholder="Username">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': editSeller.email.$invalid}">
+							<label for="email" class="col-sm-2 control-label">Email *</label>
+							<div class="col-sm-10">
+								<input type="email" name="email" ng-model="form.email" class="form-control" placeholder="Email" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-2 control-label">Role</label>
+							<div class="col-sm-3">
+								<select class="form-control" name="role" ng-model="form.role" >
+									<option ng-repeat="role in roles" value="{{role}}">{{role}}</option>
+								</select>
+							</div>
+							<label class="col-sm-2 control-label">
+								<input type="radio" name="activated" ng-model="form.activated" value="1"> Activated
+							</label>
+							<label class="col-sm-2 control-label">
+								<input type="radio" name="activated" ng-model="form.activated" value="0"> Deactivated
+							</label>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="hidden" name="_token" value="{{CSRF_TOKEN}}">
+								<button type="submit" class="btn btn-success" ng-disabled="editSeller.$invalid">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

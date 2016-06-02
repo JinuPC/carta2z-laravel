@@ -1,0 +1,75 @@
+<section class="content-header">
+	<h1>
+		Products
+	</h1>
+</section>
+<script>
+	function testfun(){
+		alert("helleo");
+	}
+</script>
+
+<section class="content" ng-show="views.add">
+	<div class="row">
+		<div class="col-md-12">
+			<a ng-click="changeView('list')" class="btn btn-danger pull-right">Cancel</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header clearfix">
+					<h3 class="pull-left">Add Seller</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<form class="form-horizontal col-md-12" ng-submit="create()" name="addSeller" role="form" novalidate>
+						<div class="form-group" ng-class="{'has-error': addSeller.name.$invalid}">
+							<label for="name" class="col-sm-2 control-label">Name * </label>
+							<div class="col-sm-10">
+								<input type="text" name="name" ng-model="form.name" value="admin" class="form-control" onclik = "testfun();"required placeholder="Full Name">
+							</div>
+						</div>
+
+
+						<div class="form-group" ng-class="{'has-error': addSeller.name.$invalid}">
+							<label for="name" ng-if="form.name == 'admin'" class="col-sm-2 control-label">Name * </label>
+							<div class="col-sm-10">
+								<input type="text" name="name" ng-if="form.name == 'admin'" ng-model="form.hello" class="form-control" required placeholder="Full Name">
+							</div>
+						</div>
+
+
+
+
+
+
+						<div class="form-group" ng-class="{'has-error': addSeller.username.$invalid}">
+							<label for="username" class="col-sm-2 control-label">Username * </label>
+							<div class="col-sm-10">
+								<input type="text" name="username" ng-model="form.username" class="form-control" required placeholder="Username">
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': addSeller.email.$invalid}">
+							<label for="email" class="col-sm-2 control-label">Email *</label>
+							<div class="col-sm-10">
+								<input type="email" name="email" ng-model="form.email" class="form-control" placeholder="Email" required>
+							</div>
+						</div>
+						<div class="form-group" ng-class="{'has-error': addSeller.password.$invalid}">
+							<label for="password" class="col-sm-2 control-label">Password *</label>
+							<div class="col-sm-10">
+								<input type="password" name="password" ng-model="form.password" ng-minlength="6" class="form-control" required placeholder="Password">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="hidden" name="_token" value="{{CSRF_TOKEN}}">
+								<button type="submit" class="btn btn-success" ng-disabled="addSeller.$invalid">Add Seller</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
