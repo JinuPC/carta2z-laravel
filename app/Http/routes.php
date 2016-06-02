@@ -32,7 +32,7 @@ Route::get('/work',function(){
 });
 
 Route::get('/', function () {
-	return view('Dashboard.main');
+	return view('dashboard.main');
 });
 
 Route::get('/index', 'MainController@index');
