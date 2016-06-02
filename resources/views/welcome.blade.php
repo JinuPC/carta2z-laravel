@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/mobirise-slider/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/mobirise-gallery/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
+    <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -30,8 +31,9 @@
             <div class="mbr-navbar__container">
                 <div class="mbr-navbar__column mbr-navbar__column--s mbr-navbar__brand">
                     <span class="mbr-navbar__brand-link mbr-brand mbr-brand--inline">
-                        <span class="mbr-brand__logo"><a href="https://mobirise.com/bootstrap-template/"><img class="mbr-navbar__brand-img mbr-brand__img" src="assets/images/discover-mobile-350x350-53.png" alt="Mobirise"></a></span>
-                        <span class="mbr-brand__name"><a class="mbr-brand__name text-white" href="https://mobirise.com/bootstrap-template/">MOBIRISE</a></span>
+                        <span class="mbr-brand__logo fa fa-shopping-cart" style="display: inline-block; float: left;font-size: 50px; color: #ff6666;"></span>
+                        
+                        <span class="mbr-brand__name"><a class="mbr-brand__name" style="color:black; font-size:40px; font-family: "Raleway", sans-serif;" href="/">Cart</a><a class="mbr-brand__name" style="color: #ff6666; font-size: 40px; font-family: "Raleway", sans-serif;" href="/">A2Z</a></span>
                     </span>
                 </div>
                 <div class="mbr-navbar__hamburger mbr-hamburger text-white"><span class="mbr-hamburger__line"></span></div>
@@ -39,15 +41,13 @@
                     <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
                         <div class="mbr-navbar__column">
                             <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active">
-                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="doc">Doc</a></li> 
-                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="slider.html">SLIDER</a></li>
-                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="video-background.html">VIDEO BG</a></li> 
-                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="blog.html">BLOG</a></li>
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="doc">Learn More</a></li>  
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="#features1-21">Learn More</a></li>                               
                             </ul>
                         </div>
                         <div class="mbr-navbar__column">
                             <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active">
-                                <li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="{{$login_url}}">LOGIN</a></li>
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="{{$login_url}}"><RP>REGISTER</RP></a></li>
                             </ul>
                         </div>
                     </nav>
@@ -56,6 +56,7 @@
         </div>
     </div>
 </section>
+
 
 <section class="mbr-slider mbr-section mbr-section--no-padding carousel slide" data-ride="carousel" data-wrap="true" data-interval="5000" id="slider-38" style="background-color: rgb(255, 255, 255);">
     <div class="mbr-section__container">
