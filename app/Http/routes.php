@@ -22,7 +22,8 @@ if(Schema::hasTable('options')){
 	$login_url = 'login';
 	$register_url = 'register';
 }
-
+$login_url = 'login';
+$admin_url = 'admin';
 Route::get('/api/csrf', function () {
 	return csrf_token();
 });
@@ -32,16 +33,21 @@ Route::get('/work',function(){
 });
 
 Route::get('/', function () {
-	return view('dashboard.main');
+	return view('welcome');
+});
+Route::get('/doc', function () {
+	return view('welcome');
 });
 
 Route::get('/index', 'MainController@index');
-Route::get('/' . $login_url, 'Auth\AuthController@getLogin');
+Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('/' . $login_url, 'Auth\AuthController@postLogin');
 Route::get('/' . $register_url, 'Auth\AuthController@getRegister');
 Route::post('/' . $register_url, 'Auth\AuthController@postRegister');
 
 Route::get('/logout', 'Auth\AuthController@getLogout');
+
+
 
 // Dashboard
 Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
@@ -86,6 +92,14 @@ Route::filter('auth', function()
 	if (Auth::guest())
 		return Redirect::to( $login_url );
 });
+
+// Route::filter('role', function()
+// { 
+//   if ( Auth::user()->role !==1) {
+//      // do something
+//      return Redirect::to('/'); 
+//    }
+// }); 
 
 Route::filter('api.csrf', function($route, $request)
 {

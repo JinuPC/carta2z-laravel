@@ -1,133 +1,157 @@
 <?php
-	global $register_url, $login_url, $register_url;
+    global $admin_url, $login_url, $register_url;
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>EMS</title>
-	<base href="{{ url('/') }}/" />
-	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-	
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/ionicons.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-	<link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}" type="text/css">
-	<link rel="stylesheet" href="{{ asset('css/animate.min.css') }}" type="text/css">
-	<link rel="stylesheet" href="{{ asset('css/creative.css') }}" type="text/css">
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
-	<style type="text/css">
-		.alert{
-			padding-left: 30px;
-		}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v2.6.1, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon"  href="{{ asset('assets/images/discover-mobile-350x350-16.png') }}" type="image/x-icon">
+    <meta name="description" content="bootstrap carousel">
+    <title>Distributed System</title>
 
-		.p20{
-			padding-top: 20px;
-		}
-		header{
-			background-image: url(../img/authback.jpg);
-			height: 100%;
-		}
-		#loginbody {
-			margin: 10%;
-		}
-		form {
-			height: 75%;
-			
-		}
-
-	</style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&amp;subset=cyrillic,latin,greek,vietnamese">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/animate.css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/socicon/css/socicon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mobirise/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mobirise-slider/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mobirise-gallery/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
 </head>
 
-<body id="page-top">
+<body>
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <h1 class="navbar-brand page-scroll" href="#page-top"><a href= "\" >UniMarket</a></h1>
+<section class="mbr-navbar mbr-navbar--freeze mbr-navbar--absolute mbr-navbar--transparent mbr-navbar--sticky mbr-navbar--auto-collapse" id="menu-20">
+    <div class="mbr-navbar__section mbr-section">
+        <div class="mbr-section__container container">
+            <div class="mbr-navbar__container">
+                <div class="mbr-navbar__column mbr-navbar__column--s mbr-navbar__brand">
+                    <span class="mbr-navbar__brand-link mbr-brand mbr-brand--inline">
+                        <span class="mbr-brand__logo"><a href="https://mobirise.com/bootstrap-template/"><img class="mbr-navbar__brand-img mbr-brand__img" src="assets/images/discover-mobile-350x350-53.png" alt="Mobirise"></a></span>
+                        <span class="mbr-brand__name"><a class="mbr-brand__name text-white" href="https://mobirise.com/bootstrap-template/">MOBIRISE</a></span>
+                    </span>
+                </div>
+                <div class="mbr-navbar__hamburger mbr-hamburger text-white"><span class="mbr-hamburger__line"></span></div>
+                <div class="mbr-navbar__column mbr-navbar__menu">
+                    <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
+                        <div class="mbr-navbar__column">
+                            <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active">
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="doc">Doc</a></li> 
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="slider.html">SLIDER</a></li>
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="video-background.html">VIDEO BG</a></li> 
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="blog.html">BLOG</a></li>
+                            </ul>
+                        </div>
+                        <div class="mbr-navbar__column">
+                            <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active">
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="{{$login_url}}">LOGIN</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div>
+        </div>
+    </div>
+</section>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                	<li>
-                        <a class="page-scroll" href="/">Home</a>
-                    </li>
-                	<li>
-                    	<a href="{{ $register_url }}">SignUp</a>
-                    </li>					
-					<li>
-						<a href="/work">How It works</a>
-					</li>
-				</ul>
+
+
+
+
+<section class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--full-height mbr-section--bg-adapted mbr-parallax-background" id="header1-22" style="background-image: url(assets/images/iphone-926663-1920-1920x1280-94.jpg);">
+    <div class="mbr-box__magnet mbr-box__magnet--sm-padding mbr-box__magnet--center-left">
+        <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(41, 105, 176);"></div>
+        <div class="mbr-box__container mbr-section__container container">
+            <div class="mbr-box mbr-box--stretched"><div class="mbr-box__magnet mbr-box__magnet--center-left">
+                <div class="row"><div class=" col-sm-6">
+                    <div class="mbr-hero animated fadeInUp">
+                        <h1 class="mbr-hero__text">FREE BOOTSTRAP TEMPLATE</h1>
+                        <p class="mbr-hero__subtext">Mobirise template is free and you can use it in your commercial as well as your personal works.<br></p>
+                    </div>
+                    <div class="mbr-buttons btn-inverse mbr-buttons--left"><a class="mbr-buttons__btn btn btn-lg animated fadeInUp delay btn-info" href="https://mobirise.com/bootstrap-template/mobirise-free-template.zip">FREE DOWNLOAD</a> <a class="mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" href="https://mobirise.com/bootstrap-template/">LEARN MORE</a></div>
+                </div></div>
+            </div></div>
+        </div>
+        <div class="mbr-arrow mbr-arrow--floating text-center">
+            <div class="mbr-section__container container">
+                <a class="mbr-arrow__link" href="#features1-23"><i class="glyphicon glyphicon-menu-down"></i></a>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <header>
-        <div class="header-content">
-        <div id="loginbody">
-            <div class="col-md-6 col-md-offset-3 form-wrap">
-		<h3>Sign In</h3>
-		@if (count($errors) > 0)
-			<ol class="alert alert-danger">
-				@foreach ($errors->all() as $error)
-				<li>{!! $error !!}</li>
-				@endforeach
-			</ol>
-		@endif
-		<form class="form-signin" method="post">
-			<div class="form-group">
-				<input type="text" class="form-control" name="userid" placeholder="Email or Username" required="" autofocus value="{{ Input::old('userid') }}" />
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-control" name="password" placeholder="Password" required=""/> 
-			</div>
-			<div class="checkbox">
-				<label><input type="checkbox" value="remember" id="remember" name="remember" {{ Input::old('remember') ? 'checked' : '' }}> Remember me</label>
-			</div>
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>   
-		</form>
-		<div class="p20 text-center">Don't have an account? <a href="{{ $register_url }}">Sign Up</a></div>
-	</div>
-	</div>
-        </div>
-    </header>
+    </div>
+</section>
+
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="social-buttons2-30" style="background-color: rgb(240, 240, 240);">
     
-	
-	<script type="text/javascript" src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-	<script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <div class="mbr-section__container container">
+        <div class="mbr-header mbr-header--inline row">
+            <div class="col-sm-4">
+                <h3 class="mbr-header__text">FOLLOW US</h3>
+            </div>
+            <div class="mbr-social-icons mbr-social-icons--style-1 col-sm-8"><a class="mbr-social-icons__icon socicon-bg-twitter" title="Twitter" target="_blank" href="https://twitter.com/mobirise"><i class="socicon socicon-twitter"></i></a> <a class="mbr-social-icons__icon socicon-bg-facebook" title="Facebook" target="_blank" href="https://www.facebook.com/pages/Mobirise/1616226671953247"><i class="socicon socicon-facebook"></i></a> <a class="mbr-social-icons__icon socicon-bg-google" title="Google+" target="_blank" href="https://plus.google.com/u/0/+Mobirise/posts"><i class="socicon socicon-google"></i></a> <a class="mbr-social-icons__icon socicon-bg-youtube" title="YouTube" target="_blank" href="http://www.youtube.com/channel/UCt_tncVAetpK5JeM8L-8jyw"><i class="socicon socicon-youtube"></i></a> <a class="mbr-social-icons__icon socicon-bg-instagram" title="Instagram" target="_blank" href="https://instagram.com/mobirise/"><i class="socicon socicon-instagram"></i></a> <a class="mbr-social-icons__icon socicon-bg-pinterest" title="Pinterest" target="_blank" href="https://www.pinterest.com/mobirise/"><i class="socicon socicon-pinterest"></i></a>  <a class="mbr-social-icons__icon socicon-bg-behance" title="Behance" target="_blank" href="https://www.behance.net/Mobirise"><i class="socicon socicon-behance"></i></a> <a class="mbr-social-icons__icon socicon-bg-tumblr" title="Tumblr" target="_blank" href="http://mobirise.tumblr.com/"><i class="socicon socicon-tumblr"></i></a> <a class="mbr-social-icons__icon socicon-bg-linkedin" title="LinkedIn" target="_blank" href="https://www.linkedin.com/in/mobirise"><i class="socicon socicon-linkedin"></i></a> <a class="mbr-social-icons__icon socicon-bg-android" title="Google Play" target="_blank" href="https://play.google.com/store/apps/details?id=com.mobirise.mobirise"><i class="socicon socicon-android"></i></a></div>
+        </div>
+    </div>
+</section>
 
-    <!-- Plugin JavaScript -->
-    <script src="{{ asset('js/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.fittext.js') }}"></script>
-    <script src="{{ asset('js/wow.min.js') }}"></script>
- 
-    <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('js/creative.js') }}"></script>
+
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="contacts2-36" style="background-color: rgb(60, 60, 60);">
+    
+    <div class="mbr-section__container container">
+        <div class="mbr-contacts mbr-contacts--wysiwyg row">
+            <div class="col-sm-6">
+                <figure class="mbr-figure mbr-figure--wysiwyg mbr-figure--full-width mbr-figure--no-bg">
+                    <div class="mbr-figure__map mbr-figure__map--short mbr-google-map">
+                        <p class="mbr-google-map__marker" data-coordinates="12.9716,77.5946"></p>
+                    </div>
+                </figure>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <p class="mbr-contacts__text"><strong>ADDRESS</strong><br>
+1234 Street Name<br>
+City, AA 99999<br><br>
+<strong>CONTACTS</strong><br>
+Email: support@mobirise.com<br>
+Phone: +1 (0) 000 0000 001<br>
+Fax: +1 (0) 000 0000 002</p>
+                    </div>
+                    <div class="col-sm-6"><p class="mbr-contacts__text"><strong>LINKS</strong></p><ul class="mbr-contacts__list"><li><a href="https://mobirise.com/bootstrap-template/" class="text-gray">Bootstrap one page template</a><a class="mbr-contacts__link text-gray" href="https://mobirise.com/bootstrap-template/"></a></li><li><a href="https://mobirise.com/bootstrap-template/" class="text-gray">Bootstrap basic template</a><a class="mbr-contacts__link text-gray" href="https://mobirise.com/bootstrap-template/"></a></li><li><a href="https://mobirise.com/bootstrap-template/" class="text-gray">Bootstrap gallery template</a></li><li><a href="https://mobirise.com/bootstrap-template/" class="text-gray">Bootstrap responsive template</a></li><li><br></li></ul></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="mbr-section mbr-section--relative mbr-section--fixed-size" id="footer1-37" style="background-color: rgb(68, 68, 68);">
+    
+    <div class="mbr-section__container container">
+        <div class="mbr-footer mbr-footer--wysiwyg row">
+            <div class="col-sm-12">
+                <p class="mbr-footer__copyright"></p><p>Copyright (c) 2015 Company Name. <a href="https://mobirise.com/bootstrap-template/license.txt" class="text-gray">License</a></p><p></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+  <script src="assets/jquery/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <script src="assets/smooth-scroll/SmoothScroll.js"></script>
+  <script src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
+  <script src="assets/jarallax/jarallax.js"></script>
+  <script src="assets/masonry/masonry.pkgd.min.js"></script>
+  <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/social-likes/social-likes.js"></script>
+  <script src="assets/mobirise/js/script.js"></script>
+  <script src="assets/mobirise-gallery/script.js"></script>
+  
+  
 </body>
 </html>

@@ -1,7 +1,4 @@
-<?php
-	global $admin_url, $login_url, $register_url;
-	$role = Auth::user()->role;
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +24,7 @@
 	<aside id="admin-menu">
 		<ul class="admin-menu-main">
 
-			<li class="menu-item"><a href="{{ $admin_url }}/#/"><i class="ion-easel"></i><div class="menu-name">Dashboard</div></a></li>
+			<li class="menu-item"><a href=><i class="ion-easel"></i><div class="menu-name">Dashboard</div></a></li>
 			<!--<li class="menu-item"><a href="{{ $admin_url }}/#/posts"><i class="ion-document-text"></i><div class="menu-name">Programs</div></a></li>-->
 
 			@if($role == 'admin')

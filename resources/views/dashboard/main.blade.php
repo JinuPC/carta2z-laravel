@@ -1,3 +1,8 @@
+<?php
+  global $admin_url, $login_url, $register_url;
+  //$role = Auth::user()->role;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +29,7 @@
     <link href="dashboard/build/css/custom.min.css" rel="stylesheet">
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md footer_fixed">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col menu_fixed">
@@ -56,7 +61,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href="{{ url('/') }}/seller">Dashboard</a></li>
                       <li><a href="index2.html">Dashboard2</a></li>
                       <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
@@ -173,7 +178,7 @@
         </div>
 
         <!-- top navigation -->
-        <div class="top_nav">
+        <div class="top_nav ">
           <div class="nav_menu">
             <nav class="" role="navigation">
               <div class="nav toggle">
