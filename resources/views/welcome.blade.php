@@ -41,13 +41,16 @@
                     <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">
                         <div class="mbr-navbar__column">
                             <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active">
-                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="doc">Learn More</a></li>  
-                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="#features1-21">Learn More</a></li>                               
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="#features1-21">FEATURES</a></li>  
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="#features1-23">TOOLS</a></li> 
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="#features1-26">SERVICES</a></li> 
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="{{$register_url}}">SIGN UP</a></li>                 
                             </ul>
                         </div>
                         <div class="mbr-navbar__column">
                             <ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active">
-                                <li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="{{$login_url}}"><RP>REGISTER</RP></a></li>
+                                <li class="mbr-navbar__item"><a class="mbr-buttons__btn btn btn-default" href="{{$login_url}}"><RP>LOGIN</RP></a></li>
+
                             </ul>
                         </div>
                     </nav>
@@ -475,7 +478,7 @@
             <div class="col-sm-6">
                 <figure class="mbr-figure mbr-figure--wysiwyg mbr-figure--full-width mbr-figure--no-bg">
                     <div class="mbr-figure__map mbr-figure__map--short mbr-google-map">
-                        <p class="mbr-google-map__marker" data-coordinates="12.9716,77.5946"></p>
+                        <p class="mbr-google-map__marker" data-coordinates="12.9219464,77.5501887" ></p>
                     </div>
                 </figure>
             </div>
