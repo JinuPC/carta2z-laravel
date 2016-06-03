@@ -104,7 +104,7 @@ class AuthController extends Controller {
         $this->create($request->all());
         $request->session()->flash('alert-success', 'Your account has been successfully created! Please wait for the approval');
 
-        return Redirect::to('/');
+        return redirect('/');
     }
 
     /*
