@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
 use View;
-use Auth, Input;
+use Auth, Input,DB;
 
 class DashboardController extends Controller
 {
@@ -21,7 +22,19 @@ class DashboardController extends Controller
 	{
 		if( $this->data['user']->role == 'admin' )
 		{
-			return view('admin.main');
+
+			
+			$totalusers = DB::table('users')->count();			
+			$retailers = User::where('role', '=', 'retailer')->count();
+			$sellers = User::where('role', '=', 'seller')->count();
+			$activated = User::where('activated', '=', '1')->count();
+			$notActivated = User::where('activated', '=', '0')->count();
+			return view('admin.main')
+			->with('retailers', $retailers)
+			->with('sellers', $sellers)
+			->with('users', $totalusers-1)
+			->with('activated', $activated-1)
+			->with('notActivated', $notActivated);
 		}
 		else if($this->data['user']->role == 'seller') 
 		{
