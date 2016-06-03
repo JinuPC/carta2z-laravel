@@ -32,7 +32,7 @@ function add_user( $username, $email, $password, $role = 'admin', $name = '', $s
 	$options->password	= bcrypt($password);
 	$options->role		= $role;
 	$options->firstname	= $name;
-	$options->status	= $status;
+	$options->activated	= $status;
 	$options->save();
 }
 

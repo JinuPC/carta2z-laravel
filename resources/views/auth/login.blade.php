@@ -83,6 +83,14 @@
                         </ol>
                     @endif
 
+                    <div class="row flash-message">
+                        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                            @if(Session::has('alert-' . $msg))
+                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                            @endif
+                        @endforeach
+                    </div>
+
                     <form class=" animated fadeInUp delay " method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" name="userid" placeholder="Email or Username" required="" autofocus value="{{ Input::old('userid') }}" />

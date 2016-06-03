@@ -61,6 +61,7 @@
 </section>
 
 
+
 <section class="mbr-slider mbr-section mbr-section--no-padding carousel slide" data-ride="carousel" data-wrap="true" data-interval="5000" id="slider-38" style="background-color: rgb(255, 255, 255);">
     <div class="mbr-section__container">
         <div>
@@ -71,6 +72,15 @@
                 <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(assets/images/slide1.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--sm-padding mbr-after-navbar">
                         <div class=" container">
+
+
+                        <div class="row flash-message">
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                @if(Session::has('alert-' . $msg))
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                                @endif
+                            @endforeach
+                        </div>
                             <!--
                             <div class="row"><div class="col-sm-8 col-sm-offset-2">
                                 <div class="mbr-hero">                                
@@ -93,6 +103,7 @@
                                     <h1 class="mbr-hero__text">SIMPLE AND POWERFUL DISTRIBUTION APPLICATION</h1>
                                     <p class="mbr-hero__subtext" >A new system for manufactures and retailers. CartA2Z will manage your wholesale and retail business. Sign up now..!</p>
                                 </div>
+                                
                                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                         <div class="mbr-buttons col-sm-10 btn-inverse mbr-buttons--center"><a class="mbr-buttons__btn btn btn-lg btn-warning" href="{{$register_url}}">REGISTER NOW AND START YOUR BUSINESS</a> </div>
                             </div></div>
@@ -126,6 +137,8 @@
         </div>
     </div>
 </section>
+
+
 
 <section class="content-2 col-4" id="features1-21" style="background-color: rgb(255, 255, 255);">
     

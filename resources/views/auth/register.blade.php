@@ -106,6 +106,14 @@
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" name="password_confirmation" placeholder="Repeat Password" required="" /> 
+						</div>
+						<div class="form-group">
+							<select class="form-control" name="role" required onfocusout="return(educationValidation());" onfocusin="educationonfocus();">
+					    		<option value="no" disabled selected hidden >Business Type</option>
+					    		<option value="retailer">Retail</option>
+					    		<option value="seller">wholesale</option>
+					    		
+					    	</select>
 						</div>			
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<button class="mbr-buttons__btn btn-lg btn btn-default btn-primary btn-block btn-info animated fadeInUp delay" type="submit">SIGN UP</button>   

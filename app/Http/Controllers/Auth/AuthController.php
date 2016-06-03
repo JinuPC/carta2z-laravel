@@ -27,7 +27,7 @@ class AuthController extends Controller {
 
     protected $username = 'username';
     protected $loginPath = 'login';
-    protected $redirectPath = '/admin/';
+    protected $redirectPath = '/admin';
 
 	/**
 	 * Create a new authentication controller instance.
@@ -58,6 +58,7 @@ class AuthController extends Controller {
             'email' => 'required|email|max:255|unique:users',
             'tin_no' => 'required|unique:users|digits:9',
             'password' => 'required|confirmed|min:8|max:64|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/',
+            'role' => 'required',
         ]);
     }
 
@@ -69,7 +70,7 @@ class AuthController extends Controller {
      */
     protected function create(array $data)
     {
-        $role = isset( $data['seller'] ) ? $data['seller'] : 'seller';
+        
 
         return User::create([
             'username' => $data['username'],
@@ -78,7 +79,7 @@ class AuthController extends Controller {
             'email' => $data['email'],
             'tin_no' => $data['tin_no'],
             'password' => bcrypt($data['password']),
-            'role' => $role, 
+            'role' => $data['role'], 
             'activated' => 0
             
         ]);
@@ -103,7 +104,7 @@ class AuthController extends Controller {
         $this->create($request->all());
         $request->session()->flash('alert-success', 'Your account has been successfully created! Please wait for the approval');
 
-        return redirect($this->redirectPath());
+        return Redirect::to('/');
     }
 
     /*
@@ -119,7 +120,7 @@ class AuthController extends Controller {
         if ($this->auth->validate([
             'email' => $request->userid, 
             'password' => $request->password, 
-            'status' => 0
+            'activated' => 0
             ])) 
         {
 
@@ -130,7 +131,7 @@ class AuthController extends Controller {
         elseif ($this->auth->validate([
             'username' => $request->userid, 
             'password' => $request->password, 
-            'status' => 0
+            'activated' => 0
             ])) 
         {
 

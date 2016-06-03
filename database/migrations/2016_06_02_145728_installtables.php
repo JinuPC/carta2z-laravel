@@ -30,7 +30,7 @@ class Installtables extends Migration {
 				$table->string('firstname');
 				$table->string('lastname');
 				$table->string('company', 100 );
-				$table->smallInteger('status');
+				$table->smallInteger('activated');
 				$table->string('phone_no',15);
 				$table->integer('tin_no');
 				$table->string('vat_id', 14 );
