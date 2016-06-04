@@ -30,7 +30,7 @@ class DashboardController extends Controller
 			return view('admin.dashboard')
 			->with('retailers', $retailers)
 			->with('sellers', $sellers)
-			->with('users', $totalusers-1)
+			->with('totalusers', $totalusers-1)
 			->with('activated', $activated-1)
 			->with('notActivated', $notActivated);
 		}

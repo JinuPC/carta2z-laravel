@@ -15,7 +15,7 @@
     @yield('css')
   </head>
 
-  <body class="nav-md footer_fixed">
+  <body class="nav-md ">
 
   
   @include('admin.header')

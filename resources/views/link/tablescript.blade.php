@@ -33,26 +33,27 @@
           if ($("#datatable-buttons").length) {
             $("#datatable-buttons").DataTable({
               dom: "Bfrtip",
+              "pageLength": 15,
               buttons: [
                 {
                   extend: "copy",
-                  className: "btn-sm"
+                  className: "red"
                 },
                 {
                   extend: "csv",
-                  className: "btn-sm"
+                  className: "green"
                 },
                 {
                   extend: "excel",
-                  className: "btn-sm"
+                  className: "red"
                 },
                 {
                   extend: "pdfHtml5",
-                  className: "btn-sm"
+                  className: "green"
                 },
                 {
                   extend: "print",
-                  className: "btn-sm"
+                  className: "red"
                 },
               ],
               responsive: true
@@ -90,4 +91,9 @@
 
         TableManageButtons.init();
       });
+
+
+
+
+
     </script>

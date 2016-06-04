@@ -41,17 +41,17 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 
 /*
 |--------------------------------------------------------------------------
-| Routes for admin
+| Routes for all authenciated users
 |--------------------------------------------------------------------------
 |
 | 
 */
 Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::get('/' . $GLOBALS['admin_url'], 'DashboardController@index');
-	Route::get('admin/users',function () {
-	return view('admin.users');
-});
-	
+	Route::get('admin/users','UserController@index');
+	Route::get('admin/activeusers','UserController@activeUsers');
+	Route::get('admin/inactiveusers','UserController@inactiveUsers');
+	Route::get('admin/verifiedusers','UserController@verifiedUsers');
 
 	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
