@@ -21,15 +21,13 @@ class DashboardController extends Controller
 	public function index()
 	{
 		if( $this->data['user']->role == 'admin' )
-		{
-
-			
+		{			
 			$totalusers = DB::table('users')->count();			
 			$retailers = User::where('role', '=', 'retailer')->count();
 			$sellers = User::where('role', '=', 'seller')->count();
 			$activated = User::where('activated', '=', '1')->count();
 			$notActivated = User::where('activated', '=', '0')->count();
-			return view('admin.master')
+			return view('admin.dashboard')
 			->with('retailers', $retailers)
 			->with('sellers', $sellers)
 			->with('users', $totalusers-1)
@@ -38,11 +36,11 @@ class DashboardController extends Controller
 		}
 		else if($this->data['user']->role == 'seller') 
 		{
-			return view('seller.main');
+			return view('seller.dashboard');
 		}
 		else if($this->data['user']->role == 'retailer')
 		{
-			return view('retailer.main');
+			return view('retailer.dashboard');
 		}
 		else
 			exit;

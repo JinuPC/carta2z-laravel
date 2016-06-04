@@ -48,7 +48,9 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 */
 Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::get('/' . $GLOBALS['admin_url'], 'DashboardController@index');
-	Route::get('admin/products','DashboardController@index');
+	Route::get('admin/users',function () {
+	return view('admin.users');
+});
 	
 
 	// Route::post('/profile/edit/{id}','ProfileController@edit');
