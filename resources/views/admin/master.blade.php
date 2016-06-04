@@ -13,21 +13,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentallela Alela! | </title>
+    <title>{{ucfirst(Auth::user()->role.' Dashboard')}} </title>
 
     <!-- Bootstrap -->
-    <link href="dashboard/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('dashboard/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="dashboard/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{asset('dashboard/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- iCheck -->
-    <link href="dashboard/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="{{asset('dashboard/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
     <!-- bootstrap-progressbar -->
-    <link href="dashboard/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="{{asset('dashboard/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
     <!-- jVectorMap -->
-    <link href="css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
+    <link href="{{asset('css/maps/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet"/>
 
     <!-- Custom Theme Style -->
-    <link href="dashboard/build/css/custom.min.css" rel="stylesheet">
+    <link href="{{asset('dashboard/build/css/custom.min.css')}}" rel="stylesheet">
   </head>
 
   <body class="nav-md footer_fixed">
@@ -36,76 +36,70 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+              <a href="{{$admin_url}}" class="site_title"><i style="border: 0; color: #ff6666;" class="fa fa-shopping-cart" aria-hidden="true"></i>Cart<span style="color: #ff6666;">&nbsp;A2Z</span></a>
             </div>
 
             <div class="clearfix"></div>
 
-            <!-- menu profile quick info -->
+            <!-- menu profile  -->
             <div class="profile">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="{{asset('images/user.png')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>{{ucfirst(Auth::user()->firstname)}}&nbsp;{{ucfirst(Auth::user()->lastname)}}</h2>
               </div>
             </div>
-            <!-- /menu profile quick info -->
+            <!-- /menu profile -->
 
             <br />
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                <h3>{{Auth::user()->role.' Dashboard'}}</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+
+                  <!-- Dashboad -->
+                  <li><a href="{{url('/').'/admin'}}"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+
+                  <!-- Users -->
+                  <li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ url('/') }}/admin">Dashboard</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
+                      <li><a href="{{url('/').'/admin/users'}}">Total Users</a></li>
+                      <li><a href="{{url('/').'/admin/activeusers'}}">Active Users</a></li>
+                      <li><a href="{{url('/').'/admin/inactiveusers'}}">Inactive Users</a></li>
+                      <li><a href="{{url('/').'/admin/verifiedusers'}}">Verified Users</a></li>                      
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+
+                  <!-- Products -->
+                  <li><a><i class="fa fa-shopping-basket"></i> Products <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">General Form</a></li>
-                      <li><a href="form_advanced.html">Advanced Components</a></li>
-                      <li><a href="form_validation.html">Form Validation</a></li>
-                      <li><a href="form_wizards.html">Form Wizard</a></li>
-                      <li><a href="form_upload.html">Form Upload</a></li>
-                      <li><a href="form_buttons.html">Form Buttons</a></li>
+                      <li><a href="{{url('/').'/admin/products'}}">List Products</a></li>
+                      <li><a href="{{url('/').'/admin/addproduct'}}">Add Product</a></li>                      
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+
+                  <!-- Inventory -->
+                  <li><a><i class="fa fa-table"></i> Inventory <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
+                      <li><a href="{{url('/').'/admin/inventory'}}">List Inventory</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+
+                  <!-- Orders -->
+                  <li><a><i class="fa fa-archive"></i> Orders <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                      <li><a href="{{url('/').'/admin/orders'}}">New Orders</a></li>
+                      <li><a href="{{url('/').'/admin/processingorders'}}">Processing</a></li>
+                      <li><a href="{{url('/').'/admin/finishedorders'}}">Finished</a></li>                      
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
+
+                  <!-- Unimarket -->
+                  <li><a><i class="fa fa-clone"></i>UniMarket <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                       <li><a href="fixed_footer.html">Fixed Footer</a></li>
@@ -188,26 +182,24 @@
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
-                    <span class=" fa fa-angle-down"></span>
+                  <a href="javascript:;" class=" user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img class="green" src="{{asset('images/user.png') }}"><span class="blue">{{ucfirst(Auth::user()->firstname)}}&nbsp;{{ucfirst(Auth::user()->lastname)}}</span>
+                    <span class=" fa blue fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
+                    <li><a href="{{url('/').'/admin/profile'}}"><span class="blue"><i class="fa  fa-user pull-right"></i>Profile</span></a></li>
                     <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
+                      <a href="{{url('/').'/admin/settings'}}"><span class="blue"><i class="fa  fa-cog pull-right"></i>Settings</span>
                       </a>
                     </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="{{url('/').'/admin/help'}}"><span class="blue"><i class="fa  fa-question-circle pull-right"></i>Help</span></a></li>
+                    <li><a href="{{ url('logout') }}"><span class="blue"><i class="fa  fa-sign-out pull-right"></i>Logout</span></a></li>
                   </ul>
                 </li>
 
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
+                    <i class="fa blue fa-envelope-o"></i>
                     <span class="badge bg-green">6</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
@@ -289,7 +281,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            copyright&copy;<a href="{{url('/')}}">CartA2Z</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -298,42 +290,42 @@
     </div>
 
     <!-- jQuery -->
-    <script src="dashboard/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="{{asset('dashboard/vendors/jquery/dist/jquery.min.js')}}"></script>
     <!-- Bootstrap -->
-    <script src="dashboard/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{asset('dashboard/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->
-    <script src="dashboard/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="{{asset('dashboard/vendors/fastclick/lib/fastclick.js')}}"></script>
     <!-- NProgress -->
-    <script src="dashboard/vendors/nprogress/nprogress.js"></script>
+    <script src="{{asset('dashboard/vendors/nprogress/nprogress.js')}}"></script>
     <!-- Chart.js -->
-    <script src="dashboard/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="{{asset('dashboard/vendors/Chart.js/dist/Chart.min.js')}}"></script>
     <!-- gauge.js -->
-    <script src="dashboard/vendors/bernii/gauge.js/dist/gauge.min.js"></script>
+    <script src="{{asset('dashboard/vendors/bernii/gauge.js/dist/gauge.min.js')}}"></script>
     <!-- bootstrap-progressbar -->
-    <script src="dashboard/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="{{asset('dashboard/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
     <!-- iCheck -->
-    <script src="dashboard/vendors/iCheck/icheck.min.js"></script>
+    <script src="{{asset('dashboard/vendors/iCheck/icheck.min.js')}}"></script>
     <!-- Skycons -->
-    <script src="dashboard/vendors/skycons/skycons.js"></script>
+    <script src="{{asset('dashboard/vendors/skycons/skycons.js')}}"></script>
     <!-- Flot -->
-    <script src="dashboard/vendors/Flot/jquery.flot.js"></script>
-    <script src="dashboard/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="dashboard/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="dashboard/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="dashboard/vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="{{asset('dashboard/vendors/Flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('dashboard/vendors/Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{asset('dashboard/vendors/Flot/jquery.flot.time.js')}}"></script>
+    <script src="{{asset('dashboard/vendors/Flot/jquery.flot.stack.js')}}"></script>
+    <script src="{{asset('dashboard/vendors/Flot/jquery.flot.resize.js')}}"></script>
     <!-- Flot plugins -->
-    <script src="dashboard/js/flot/jquery.flot.orderBars.js"></script>
-    <script src="dashboard/js/flot/date.js"></script>
-    <script src="dashboard/js/flot/jquery.flot.spline.js"></script>
-    <script src="dashboard/js/flot/curvedLines.js"></script>
+    <script src="{{asset('dashboard/js/flot/jquery.flot.orderBars.js')}}"></script>
+    <script src="{{asset('dashboard/js/flot/date.js')}}"></script>
+    <script src="{{asset('dashboard/js/flot/jquery.flot.spline.js')}}"></script>
+    <script src="{{asset('dashboard/js/flot/curvedLines.js')}}"></script>
     <!-- jVectorMdashboard/ap -->
-    <script src="dashboard/js/maps/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="{{asset('dashboard/js/maps/jquery-jvectormap-2.0.3.min.js')}}"></script>
     <!-- bootstradashboard/p-daterangepicker -->
-    <script src="dashboard/js/moment/moment.min.js"></script>
-    <script src="dashboard/js/datepicker/daterangepicker.js"></script>
+    <script src="{{asset('dashboard/js/moment/moment.min.js')}}"></script>
+    <script src="{{asset('dashboard/js/datepicker/daterangepicker.js')}}"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="dashboard/build/js/custom.min.js"></script>
+    <script src="{{asset('dashboard/build/js/custom.min.js')}}"></script>
 
     <!-- Flot -->
     <script>

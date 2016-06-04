@@ -29,7 +29,7 @@ class DashboardController extends Controller
 			$sellers = User::where('role', '=', 'seller')->count();
 			$activated = User::where('activated', '=', '1')->count();
 			$notActivated = User::where('activated', '=', '0')->count();
-			return view('admin.main')
+			return view('admin.master')
 			->with('retailers', $retailers)
 			->with('sellers', $sellers)
 			->with('users', $totalusers-1)

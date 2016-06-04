@@ -27,18 +27,9 @@ $admin_url = 'admin';
 Route::get('/api/csrf', function () {
 	return csrf_token();
 });
-
-Route::get('/work',function(){
-	return view('document');
-});
-
 Route::get('/', function () {
 	return view('welcome');
 });
-Route::get('/doc', function () {
-	return view('welcome');
-});
-
 Route::get('/index', 'MainController@index');
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('/' . $login_url, 'Auth\AuthController@postLogin');
@@ -48,44 +39,62 @@ Route::post('/' . $register_url, 'Auth\AuthController@postRegister');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
 
-
-// Dashboard
+/*
+|--------------------------------------------------------------------------
+| Routes for admin
+|--------------------------------------------------------------------------
+|
+| 
+*/
 Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::get('/' . $GLOBALS['admin_url'], 'DashboardController@index');
+	Route::get('admin/products','DashboardController@index');
+	
 
-	Route::post('/profile/edit/{id}','ProfileController@edit');
+	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
-	Route::get('/sellers/listApproved/{page}','SellerController@listApproved');
-	Route::get('/sellers/listPending/{page}','SellerController@listPending');
-	Route::post('/sellers/approveOne/{id}','SellerController@approveOne');
-	Route::post('/sellers/denyOne/{id}','SellerController@denyOne');
-	Route::post('/sellers/create','SellerController@create');
-	Route::post('/sellers/edit/{id}','SellerController@edit');
-	Route::delete('/sellers/{id}','SellerController@delete');
+	// Route::get('/sellers/listApproved/{page}','SellerController@listApproved');
+	// Route::get('/sellers/listPending/{page}','SellerController@listPending');
+	// Route::post('/sellers/approveOne/{id}','SellerController@approveOne');
+	// Route::post('/sellers/denyOne/{id}','SellerController@denyOne');
+	// Route::post('/sellers/create','SellerController@create');
+	// Route::post('/sellers/edit/{id}','SellerController@edit');
+	// Route::delete('/sellers/{id}','SellerController@delete');
 
-	//Route::get('/customers/listAll/{page}','CustomerController@listAll');
-	//Route::post('/customers/create','CustomerController@create');
-	//Route::post('/customers/edit/{id}','CustomerController@edit');
-	//Route::delete('/customers/{id}','CustomerController@delete');
+	// //Route::get('/customers/listAll/{page}','CustomerController@listAll');
+	// //Route::post('/customers/create','CustomerController@create');
+	// //Route::post('/customers/edit/{id}','CustomerController@edit');
+	// //Route::delete('/customers/{id}','CustomerController@delete');
 
-	Route::get('/stores/listStores/{page}','StoreController@listStores');
-	Route::get('/stores/listChannel','StoreController@listChannel');
-	Route::post('/stores/edit/{id}','StoreController@saveEdit');
-	Route::post('/stores/create','StoreController@create');
-	Route::delete('/stores/{key}','StoreController@delete');
+	// Route::get('/stores/listStores/{page}','StoreController@listStores');
+	// Route::get('/stores/listChannel','StoreController@listChannel');
+	// Route::post('/stores/edit/{id}','StoreController@saveEdit');
+	// Route::post('/stores/create','StoreController@create');
+	// Route::delete('/stores/{key}','StoreController@delete');
 
-	Route::get('/posts/listAll/{page}','PostController@listAll');
-	Route::get('/posts/listApproved/{page}','PostController@listApproved');
-	Route::get('/posts/listPending/{page}','PostController@listPending');
-	Route::get('/posts/{id}','PostController@view');
-	Route::post('/posts/approveOne/{id}','PostController@approveOne');
-	Route::post('/posts/denyOne/{id}','PostController@denyOne');
-	Route::post('/posts/create','PostController@create');
-	Route::post('/posts/edit/{id}','PostController@edit');
-	Route::delete('/posts/{id}','PostController@delete');
+	// Route::get('/posts/listAll/{page}','PostController@listAll');
+	// Route::get('/posts/listApproved/{page}','PostController@listApproved');
+	// Route::get('/posts/listPending/{page}','PostController@listPending');
+	// Route::get('/posts/{id}','PostController@view');
+	// Route::post('/posts/approveOne/{id}','PostController@approveOne');
+	// Route::post('/posts/denyOne/{id}','PostController@denyOne');
+	// Route::post('/posts/create','PostController@create');
+	// Route::post('/posts/edit/{id}','PostController@edit');
+	// Route::delete('/posts/{id}','PostController@delete');
 });
 
-//Auth filtering
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Filters Section
+|--------------------------------------------------------------------------
+|
+|
+|
+*/
 Route::filter('auth', function()
 {
 	global $login_url;
@@ -93,13 +102,6 @@ Route::filter('auth', function()
 		return Redirect::to( $login_url );
 });
 
-// Route::filter('role', function()
-// { 
-//   if ( Auth::user()->role !==1) {
-//      // do something
-//      return Redirect::to('/'); 
-//    }
-// }); 
 
 Route::filter('api.csrf', function($route, $request)
 {

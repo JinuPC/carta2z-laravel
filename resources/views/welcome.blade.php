@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="generator" content="Mobirise v2.6.1, mobirise.com">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon"  href="{{ asset('assets/images/discover-mobile-350x350-16.png') }}" type="image/x-icon">
+    
     <meta name="description" content="bootstrap carousel">
     <title>Distributed System</title>
 
