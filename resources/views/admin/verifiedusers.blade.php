@@ -45,7 +45,7 @@
                           <th style="text-align:center;">Email</th>
                           <th style="text-align:center;">Tin No</th>
                           <th style="text-align:center;">Phone</th>
-                          <th colspan="2" style="text-align:center;">Action</th>
+                          <th style="text-align:center;">Action</th>
                         </tr>
                       </thead>
 
@@ -61,42 +61,9 @@
                           <td>{{$user->phone_no}}</td>
                           <td style="text-align:center;">
 
-                          <!-- activating button -->
-                          {!! Form::open([
-                                'method' => 'POST',
-                                'url' => ['admin/users/verify/'.$user->user_id]
-                            ]) !!}
 
-                              <!-- Small modal -->
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="{{'#act'.$index}}"><span data-toggle="tooltip" title="Verify User" class="glyphicon  glyphicon-user"></span></button>
 
-                                <div  class="modal  fade bs-example-modal-sm" id="{{'act'.$index}}" tabindex="-1" role="dialog" aria-hidden="true">
-                                  <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-                                        </button>
-                                        <h4 style="text-align:center;" class="modal-title" id="myModalLabel2">Are you Sure ?</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                        <h4>Verify {{$user->firstname}} ?</h4>                                      
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success">Verify</button>
-                                      </div>
-
-                                    </div>
-                                  </div>
-                                </div>
-                                <!-- /modals -->
-                              {!! Form::close() !!}  
-                              <!-- ending activate Button -->  
-                              </td>
-
-                              <td style="text-align:center;">
-                          <!-- Delete Button -->
+                            <!-- Delete Button -->
                             {!! Form::open([
                                 'method' => 'POST',
                                 'url' => ['admin/users/disapprove/'.$user->user_id]
@@ -126,7 +93,7 @@
                                   </div>
                                 </div>
                                 <!-- /modals -->
-                              {!! Form::close() !!}        
+                              {!! Form::close() !!}          
 
                           </td>
                         </tr>    

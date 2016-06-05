@@ -28,6 +28,8 @@
 
     <!-- Datatables -->
     <script>
+    $('div.flashalert').delay(5000).slideUp(300);
+
       $(document).ready(function() {
         var handleDataTableButtons = function() {
           if ($("#datatable-buttons").length) {

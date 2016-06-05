@@ -52,7 +52,10 @@ Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::get('admin/activeusers','UserController@activeUsers');
 	Route::get('admin/inactiveusers','UserController@inactiveUsers');
 	Route::get('admin/verifiedusers','UserController@verifiedUsers');
-
+	Route::delete('admin/users/{id}','UserController@destroy');
+	Route::post('admin/users/disapprove/{id}','UserController@disapprove');
+	Route::post('admin/users/activate/{id}','UserController@activate');
+	Route::post('admin/users/verify/{id}','UserController@verify');
 	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
 	// Route::get('/sellers/listApproved/{page}','SellerController@listApproved');

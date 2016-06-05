@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
-use Auth, Input, DB;
+use Auth, Input, DB, Session;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
@@ -25,7 +25,11 @@ class UserController extends Controller {
 	public function index()
 	{
 		if(Auth::user()->role != 'admin')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
 			return View('admin.404');
+		}
+			
 		$users = User::where('role', '<>', 'admin')->get();
 		return view('admin.users')
 			-> with('users', $users)
@@ -35,9 +39,12 @@ class UserController extends Controller {
 	public function activeUsers()
 	{
 		if(Auth::user()->role != 'admin')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
 			return View('admin.404');
+		}
 		$users = User::where('activated', '=', 1)->get();
-		return view('admin.users')
+		return view('admin.activeusers')
 			-> with('users', $users)
 			-> with('title', "Active");
 	}
@@ -45,9 +52,12 @@ class UserController extends Controller {
 	public function inactiveUsers()
 	{
 		if(Auth::user()->role != 'admin')
-			return view('admin.404');
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
+			return View('admin.404');
+		}
 		$users = User::where('activated', '=', 0)->get();
-		return view('admin.users')
+		return view('admin.inactiveusers')
 			-> with('users', $users)
 			-> with('title', "Inactive");
 	}
@@ -55,31 +65,64 @@ class UserController extends Controller {
 	public function verifiedUsers()
 	{
 		if(Auth::user()->role != 'admin')
-			return view('admin.404');
-		$users = User::where('activated', '=', 2)->get();
-		return view('admin.users')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
+			return View('admin.404');
+		}
+		$users = User::where('activated', '=', 10)->get();
+		return view('admin.verifiedusers')
 			-> with('users', $users)
 			-> with('title', "Verified");
 	}
 
-	public function approveOne($id){
-		if( $this->data['user']->role != 'admin' ) 
-			return view('admin.404');
+	public function disapprove($id){
+		if(Auth::user()->role != 'admin')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
+			return View('admin.404');
+		}
 		$user = User::find($id);
-		$user->status = 1;
+		$user->activated = 0;
 		$user->save();
-		return $this->listPending();
+		Session::flash('flash_info', $user->firstname.' account deactivated.' );
+		return redirect('admin/activeusers');
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Display the specified resource.
 	 *
+	 * @param  int  $id
 	 * @return Response
 	 */
-	public function create()
+	public function activate($id)
 	{
-		//
+		if(Auth::user()->role != 'admin')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
+			return View('admin.404');
+		}
+		$user = User::find($id);
+		$user->activated = 1;
+		$user->save();
+		Session::flash('flash_sucess', $user->firstname.' account Activated.' );
+		return redirect('admin/inactiveusers');
 	}
+
+	public function verify($id)
+	{
+		if(Auth::user()->role != 'admin')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
+			return View('admin.404');
+		}
+		$user = User::find($id);
+		$user->activated = 10;
+		$user->save();
+		Session::flash('flash_sucess', $user->firstname.' account added Verified group.' );
+		return redirect('admin/activeusers');
+	}
+
+	
 
 	/**
 	 * Store a newly created resource in storage.
@@ -132,7 +175,12 @@ class UserController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		if(Auth::user()->role != 'admin')
+			return View('admin.404');
+		$user = User::findOrFail($id);
+		$user->delete();
+		Session::flash('flash_sucess', $user->firstname.' details has been deleted.' );
+		return redirect('admin/users');
 	}
 
 }

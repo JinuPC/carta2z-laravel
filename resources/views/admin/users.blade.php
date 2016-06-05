@@ -21,12 +21,11 @@
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-              @if(isset($alert))
                 @include('link.alert')
-              @endif
+              
               </div>
 
-              <!-- Starting table -->
+              <!-- Starting table -->              
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -50,7 +49,6 @@
                         </tr>
                       </thead>
 
-
                       <tbody>
                       <?php $index = 1;?>
                       @foreach ($users as $user)
@@ -61,28 +59,52 @@
                           <td>{{$user->email}}</td>
                           <td>{{$user->tin_no}}</td>
                           <td>{{$user->phone_no}}</td>
-                          <td style="text-align:center;"> 
-                            <input type="submit" value="Approve" class="btn btn-info"></button>
-                            <input type="submit" value="Approve" class="btn btn-info"></button>
+                          <td style="text-align:center;">
+
+
+
+                            {!! Form::open([
+                                'method' => 'DELETE',
+                                'url' => ['admin/users/'.$user->user_id]
+                            ]) !!}
+
+                              <!-- Small modal -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="{{'#modal'.$index}}"><span data-toggle="tooltip" title="Remove User" class="glyphicon glyphicon-remove"></span></button>
+
+                                <div  class="modal  fade bs-example-modal-sm" id="{{'modal'.$index}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                  <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 style="text-align:center;" class="modal-title" id="myModalLabel2">Are you Sure ?</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <h4>Remove {{$user->firstname}} Permanaently?</h4>                                      
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Remove</button>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- /modals -->
+                              {!! Form::close() !!}        
 
                           </td>
                         </tr>    
-                      @endforeach
-                      
-                                            
+                      @endforeach 
                       </tbody>
                     </table>
+                    <!-- Ending Table -->                   
                   </div>
                 </div>
-              </div>
-
-              
-              
-                           
+              </div>       
             </div>
-
           </div>
-
         </div>
         
         <!-- /page content -->
