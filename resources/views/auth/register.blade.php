@@ -96,11 +96,14 @@
 							<input type="text" class="form-control" name="username" placeholder="Username" required="" value="{{ Input::old('username') }}" />
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="email" placeholder="Email Address" required="" value="{{ Input::old('email') }}" />
+							<input type="email" class="form-control" name="email" placeholder="Email Address" required="" value="{{ Input::old('email') }}" />
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control" name="tin_no" placeholder="Tin Number" required="" autofocus value="{{ Input::old('tin_no') }}" />
 						</div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="phone_no" placeholder="Phone Number" required="" autofocus value="{{ Input::old('phone_no') }}" />
+                        </div>
 						<div class="form-group">
 							<input type="password" class="form-control" name="password" placeholder="Password" required="" /> 
 						</div>

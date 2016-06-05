@@ -19,7 +19,7 @@
 
   
   @include('admin.header')
-  
+                  
   <!-- page content -->
          <div class="col-md-12 " style="height:720px;">
           <div class="col-middle">

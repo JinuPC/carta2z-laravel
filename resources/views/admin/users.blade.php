@@ -21,7 +21,9 @@
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                
+              @if(isset($alert))
+                @include('link.alert')
+              @endif
               </div>
 
               <!-- Starting table -->
@@ -35,16 +37,16 @@
                   </div>
                   <div class="x_content">
                     
-                    <table id="datatable-buttons" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>No</th>
-                          <th>FirstName</th>
-                          <th>LastName</th>
-                          <th>Email</th>
-                          <th>Tin No</th>
-                          <th>Phone</th>
-                          <th>Operations</th>
+                    <table id="datatable-buttons" class="table table-hover table-striped table-bordered">
+                      <thead style="background-color:#3D4456; color:white;">
+                        <tr >
+                          <th style="text-align:center;">No</th>
+                          <th style="text-align:center;">FirstName</th>
+                          <th style="text-align:center;">LastName</th>
+                          <th style="text-align:center;">Email</th>
+                          <th style="text-align:center;">Tin No</th>
+                          <th style="text-align:center;">Phone</th>
+                          <th style="text-align:center;">Action</th>
                         </tr>
                       </thead>
 
@@ -58,8 +60,12 @@
                           <td>{{$user->lastname}}</td>
                           <td>{{$user->email}}</td>
                           <td>{{$user->tin_no}}</td>
-                          <td>9786240548</td>
-                          <td>$320,800</td>
+                          <td>{{$user->phone_no}}</td>
+                          <td style="text-align:center;"> 
+                            <input type="submit" value="Approve" class="btn btn-info"></button>
+                            <input type="submit" value="Approve" class="btn btn-info"></button>
+
+                          </td>
                         </tr>    
                       @endforeach
                       

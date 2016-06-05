@@ -45,7 +45,7 @@ class UserController extends Controller {
 	public function inactiveUsers()
 	{
 		if(Auth::user()->role != 'admin')
-			return View('admin.404');
+			return view('admin.404');
 		$users = User::where('activated', '=', 0)->get();
 		return view('admin.users')
 			-> with('users', $users)
@@ -55,11 +55,20 @@ class UserController extends Controller {
 	public function verifiedUsers()
 	{
 		if(Auth::user()->role != 'admin')
-			return View('admin.404');
+			return view('admin.404');
 		$users = User::where('activated', '=', 2)->get();
 		return view('admin.users')
 			-> with('users', $users)
 			-> with('title', "Verified");
+	}
+
+	public function approveOne($id){
+		if( $this->data['user']->role != 'admin' ) 
+			return view('admin.404');
+		$user = User::find($id);
+		$user->status = 1;
+		$user->save();
+		return $this->listPending();
 	}
 
 	/**

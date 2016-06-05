@@ -57,6 +57,7 @@ class AuthController extends Controller {
             'username' => 'required|string|max:64|min:4|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'tin_no' => 'required|unique:users|digits:9',
+            'phone_no' => 'required|unique:users|digits:10',
             'password' => 'required|confirmed|min:8|max:64|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/',
             'role' => 'required',
         ]);
@@ -78,6 +79,7 @@ class AuthController extends Controller {
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'tin_no' => $data['tin_no'],
+            'phone_no' => $data['phone_no'],
             'password' => bcrypt($data['password']),
             'role' => $data['role'], 
             'activated' => 0

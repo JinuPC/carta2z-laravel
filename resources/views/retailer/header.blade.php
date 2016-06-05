@@ -160,7 +160,7 @@
                       </a>
                     </li>
                     <li><a href="{{url('/').'/admin/help'}}"><span class="blue"><i class="fa  fa-question-circle pull-right"></i>Help</span></a></li>
-                    <li><a href="{{ url('logout') }}"><span class="blue"><i class="fa  fa-sign-out pull-right"></i>Logout</span></a></li>
+                    <li><a href="{{ url('logout') }}"><span class="blue"><i class="fa  fa-power-off pull-right"></i>Logout</span></a></li>
                   </ul>
                 </li>
 
