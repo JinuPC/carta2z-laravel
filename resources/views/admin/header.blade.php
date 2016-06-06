@@ -36,7 +36,9 @@
                       <li><a href="{{url('/').'/admin/users'}}">Total Users</a></li>
                       <li><a href="{{url('/').'/admin/activeusers'}}">Active Users</a></li>
                       <li><a href="{{url('/').'/admin/inactiveusers'}}">Inactive Users</a></li>
-                      <li><a href="{{url('/').'/admin/verifiedusers'}}">Verified Users</a></li>                      
+                      <li><a href="{{url('/').'/admin/verifiedusers'}}">Verified Users</a></li>
+                      <li><a href="{{url('/').'/admin/listsellers'}}">Sellers</a></li>
+                      <li><a href="{{url('/').'/admin/listretailers'}}">Retailers</a></li>                      
                     </ul>
                   </li>
 

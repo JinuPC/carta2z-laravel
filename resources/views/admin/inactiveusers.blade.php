@@ -43,6 +43,7 @@
                           <th style="text-align:center;">FirstName</th>
                           <th style="text-align:center;">LastName</th>
                           <th style="text-align:center;">Email</th>
+                          <th style="text-align:center;">Role</th>
                           <th style="text-align:center;">Tin No</th>
                           <th style="text-align:center;">Phone</th>
                           <th colspan="2" style="text-align:center;">Actions</th>
@@ -57,6 +58,7 @@
                           <td>{{$user->firstname}}</td>
                           <td>{{$user->lastname}}</td>
                           <td>{{$user->email}}</td>
+                          <td>{{ucfirst($user->role)}}</td>
                           <td>{{$user->tin_no}}</td>
                           <td>{{$user->phone_no}}</td>
                           <td style="text-align:center;">

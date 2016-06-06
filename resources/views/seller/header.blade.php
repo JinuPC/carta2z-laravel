@@ -1,4 +1,4 @@
-<div class="container body">
+ <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
@@ -36,7 +36,9 @@
                       <li><a href="{{url('/').'/admin/users'}}">Total Users</a></li>
                       <li><a href="{{url('/').'/admin/activeusers'}}">Active Users</a></li>
                       <li><a href="{{url('/').'/admin/inactiveusers'}}">Inactive Users</a></li>
-                      <li><a href="{{url('/').'/admin/verifiedusers'}}">Verified Users</a></li>                      
+                      <li><a href="{{url('/').'/admin/verifiedusers'}}">Verified Users</a></li>
+                      <li><a href="{{url('/').'/admin/listsellers'}}">Sellers</a></li>
+                      <li><a href="{{url('/').'/admin/listretailers'}}">Retailers</a></li>                      
                     </ul>
                   </li>
 
@@ -143,9 +145,8 @@
           <div class="nav_menu">
             <nav class="" role="navigation">
               <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"><strong  style="font-family: 'Oswald', sans-serif;">&nbsp;&nbsp;{{ isset($title) ? $name : 'Dashboard' }}</strong></i></a>
-
-              </div>
+                <a id="menu_toggle"><i class="fa fa-bars"><strong  style="font-family: 'Oswald', sans-serif;">&nbsp;{{ isset($title) ? $title : 'Dashboard' }}</strong></i></a>
+              </div>             
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="">

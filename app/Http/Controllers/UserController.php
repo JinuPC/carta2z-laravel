@@ -36,6 +36,35 @@ class UserController extends Controller {
 			-> with('title', "Users");
 	}
 
+	public function listSellers()
+	{
+		if(Auth::user()->role != 'admin')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
+			return View('admin.404');
+		}
+			
+		$users = User::where('role', '=', 'seller')->get();
+		return view('admin.users')
+			-> with('users', $users)
+			-> with('title', "Users");
+	}
+
+	public function listRetailers()
+	{
+		if(Auth::user()->role != 'admin')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
+			return View('admin.404');
+		}
+			
+		$users = User::where('role', '=', 'retailer')->get();
+		return view('admin.users')
+			-> with('users', $users)
+			-> with('title', "Users");
+	}
+
+
 	public function activeUsers()
 	{
 		if(Auth::user()->role != 'admin')
@@ -176,7 +205,10 @@ class UserController extends Controller {
 	public function destroy($id)
 	{
 		if(Auth::user()->role != 'admin')
+		{
+			Session::flash('flash_danger', 'Permission Denied....!' );
 			return View('admin.404');
+		}
 		$user = User::findOrFail($id);
 		$user->delete();
 		Session::flash('flash_sucess', $user->firstname.' details has been deleted.' );

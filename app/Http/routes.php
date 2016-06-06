@@ -56,6 +56,8 @@ Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::post('admin/users/disapprove/{id}','UserController@disapprove');
 	Route::post('admin/users/activate/{id}','UserController@activate');
 	Route::post('admin/users/verify/{id}','UserController@verify');
+	Route::get('admin/listretailers','UserController@listRetailers');
+	Route::get('admin/listsellers','UserController@listSellers');
 	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
 	// Route::get('/sellers/listApproved/{page}','SellerController@listApproved');
