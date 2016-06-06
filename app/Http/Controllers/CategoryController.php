@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Category;
-use Auth, Input, DB, Session, Validator;
+use Auth, Input, DB, Session, Validator, Log;
 
 use Illuminate\Http\Request;
 
@@ -28,7 +28,8 @@ class CategoryController extends Controller {
 			return View('admin.404');
 		}
 			
-		$categories = Category::all();
+		$categories = Category::where('parent_id','=','0')->with('children')->get();
+		Log::info(print_r($categories, true));
 		return view('admin.categories')
 			-> with('categories', $categories)
 			-> with('title', "Store")
@@ -54,6 +55,7 @@ class CategoryController extends Controller {
 		{
 			$category = new Category;
 			$category->category_name = Input::get('category_name');
+			$category->parent_id = Input::get('parent_id');
 			$category->save();
 			Session::flash('flash_sucess', ' category sucessfully created' );		
 		}
@@ -122,8 +124,17 @@ class CategoryController extends Controller {
 			return View('admin.404');
 		}
 		$category = Category::findOrFail($id);
+		$ids_to_delete = $category->id;
+		
+		if($category->parent_id == 0) {
+			Session::flash('flash_sucess', $ids_to_delete.' has been deleted.' );
+		 	
+		 	DB::table('categories')->where('parent_id', $ids_to_delete)->delete(); 
+		 	
+		}
+		
 		$category->delete();
-		Session::flash('flash_sucess', $category->category_name.' has been deleted.' );
+		//Session::flash('flash_sucess', $category->category_name.' has been deleted.' );
 		return redirect('admin/store/categories');
 	}
 

@@ -36,7 +36,7 @@
                   </div>
                   <div class="x_content">
                     
-                    <table id="datatable-buttons" class="table table-hover table-striped table-bordered">
+                    <table id="datatable-buttons" class="table   table-bordered">
 
                       <thead style="background-color:#3D4456; color:white;">
                         <tr >
@@ -49,9 +49,10 @@
                       </thead>
 
                       <tbody>
+                      <!--  Super Category pages -->
                       <?php $index = 1;?>
                       @foreach ($categories as $category)
-                        <tr>
+                        <tr class="bg-primary">
                           <td>{{$index++}}</td>
                           <td>{{$category->category_name}}</td>
                           <td style="text-align:center;">{{$category->created_at}}</td>
@@ -66,23 +67,72 @@
                             ]) !!}
 
                               <!-- Small modal -->
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="{{'#modal'.$index}}"><span data-toggle="tooltip" title="Remove Category" class="glyphicon glyphicon-remove"></span></button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="{{'#modal'.$category->id}}"><span data-toggle="tooltip" title="Remove Category" class="glyphicon glyphicon-remove"></span></button>
 
-                                <div  class="modal  fade bs-example-modal-sm" id="{{'modal'.$index}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div  class="modal  fade bs-example-modal-sm" id="{{'modal'.$category->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                                   <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
 
                                       <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                                         </button>
-                                        <h4 style="text-align:center;" class="modal-title" id="myModalLabel2">Are you Sure ?</h4>
+                                        <h4 style="text-align:center;" class="modal-title red" id="myModalLabel2">Are you Sure ?</h4>
                                       </div>
-                                      <div class="modal-body">
-                                        <h4>Remove Permanaently?</h4>                                      
+                                      <div  class="modal-body red">
+                                        <h4>Remove {{$category->category_name}} Permanaently?</h4>                                      
                                       </div>
                                       <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Remove</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger">Remove</button>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- /modals -->
+                              {!! Form::close() !!} 
+
+                          </td>
+
+                        </tr>   
+
+                        <!-- starting sub Category pages -->
+                        @if($category->children()->count())
+                        <?php $cat = $category['children']; ?>
+                        <?php $subindex = 1;?>
+                          @foreach ($cat as $sub)
+                              <tr>
+                          <td>{{$subindex++}}</td>
+                          <td>{{$sub->category_name}}</td>
+                          <td style="text-align:center;">{{$sub->created_at}}</td>
+                          <td style="text-align:center;">{{$sub->updated_at}}</td>                          
+                          <td style="text-align:center;">
+
+
+
+                            {!! Form::open([
+                                'method' => 'DELETE',
+                                'url' => ['admin/store/categories/'.$sub->id]
+                            ]) !!}
+
+                              <!-- Small modal -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="{{'#submodal'.$subindex}}"><span data-toggle="tooltip" title="Remove Category" class="glyphicon glyphicon-remove"></span></button>
+
+                                <div  class="modal  fade bs-example-modal-sm" id="{{'submodal'.$subindex}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                  <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+
+                                      <div class="modal-header">
+                                        <button type="button" class="close red" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 style="text-align:center;" class="modal-title red" id="myModalLabel2">Are you Sure ?</h4>
+                                      </div>
+                                      <div class="modal-body red ">
+                                        <h4>Remove {{$sub->category_name}} Permanaently?</h4>                                      
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger">Remove</button>
                                       </div>
 
                                     </div>
@@ -93,18 +143,74 @@
 
                           </td>
                         </tr>    
-                      @endforeach 
+                          @endforeach
+                        @endif 
+
+                        <!-- Ending sub Category pages -->
+
+
+                        <!-- Add Button -->
                       <tr>
                         <td colspan="5" style="text-align:center;" >
                         
-                          <!-- Add Button -->
+                          
+                            {!! Form::open([
+                                'method' => 'POST',
+                                'url' => ['admin/store/categories/add']
+                            ]) !!}
+
+
+                              <!-- Small modal -->
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="{{'#modaladd'.$index}}"><span data-toggle="tooltip" title="Add new Sub Category" class="glyphicon glyphicon-plus"></span></button>
+
+
+                                <div  class="modal  fade bs-example-modal-sm" id="{{'modaladd'.$index}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                  <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 style="text-align:center;" class="modal-title" id="myModalLabel2">Add new Category</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <h4>Enter Category name</h4>
+                                        <input type="text" focus name="category_name"></input>
+                                        <input type="hidden" value="{{$category->id}}" name="parent_id"></input>                                     
+                                      </div>
+                                      <div class="modal-footer">                                        
+                                        <button type="submit" class="btn btn-primary">Add</button>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- /modals -->
+                              {!! Form::close() !!} 
+                          
+
+                        </td>
+                      </tr>
+                      <!-- Ending Button -->
+
+                      @endforeach 
+
+
+                      <!-- Ending Super Category pages -->            
+
+
+                      <!-- Add Button -->
+                      <tr>
+                        <td colspan="5" style="text-align:center;" >
+                        
+                          
                             {!! Form::open([
                                 'method' => 'POST',
                                 'url' => ['admin/store/categories/add']
                             ]) !!}
 
                               <!-- Small modal -->
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="{{'#modaladd'}}"><span data-toggle="tooltip" title="Add new Category" class="glyphicon glyphicon-plus"></span></button>
+                                <button type="button" style="background-color:green;" class="btn btn-sucess" data-toggle="modal" data-target="{{'#modaladd'}}"><span data-toggle="tooltip" title="Add new Main Category" class="glyphicon glyphicon-plus"></span></button>
 
                                 <div  class="modal  fade bs-example-modal-sm" id="{{'modaladd'}}" tabindex="-1" role="dialog" aria-hidden="true">
                                   <div class="modal-dialog modal-sm">
@@ -117,7 +223,8 @@
                                       </div>
                                       <div class="modal-body">
                                         <h4>Enter Category name</h4>
-                                        <input type="text" name="category_name"></div>                                     
+                                        <input type="text" name="category_name"></input>
+                                        <input type="hidden" value="0" name="parent_id"></input>                                     
                                       </div>
                                       <div class="modal-footer">                                        
                                         <button type="submit" class="btn btn-primary">Add</button>
@@ -128,10 +235,21 @@
                                 </div>
                                 <!-- /modals -->
                               {!! Form::close() !!} 
-                          <!-- Ending Button -->
+                          
 
                         </td>
                       </tr>
+                      <!-- Ending Button -->
+                      
+
+                      
+
+
+
+
+
+
+                      
                       </tbody>
                     </table>
                     <!-- Ending Table -->                   

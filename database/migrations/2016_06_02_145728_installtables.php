@@ -116,7 +116,8 @@ class Installtables extends Migration {
 
 		if( !(Schema::hasTable('categories')) ){
 			Schema::create('categories', function (Blueprint $table) {
-				$table->increments('id');				
+				$table->increments('id');
+				$table->integer('parent_id');				
 				$table->string('category_name');				
 				$table->timestamps();
 			});

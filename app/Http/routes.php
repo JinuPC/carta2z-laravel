@@ -11,7 +11,7 @@
 |
 */
 
-global $admin_url, $login_url, $register_url;
+global $admin_url, $login_url, $register_url, $store_url;
 
 if(Schema::hasTable('options')){
 	$admin_url = get_option('adminurl') != null ? get_option('adminurl') : 'admin';
@@ -24,11 +24,13 @@ if(Schema::hasTable('options')){
 }
 $login_url = 'login';
 $admin_url = 'admin';
+$store_url  ='store';
 Route::get('/api/csrf', function () {
 	return csrf_token();
 });
+
 Route::get('/', function () {
-	return view('store.master');
+	return view('welcome');
 });
 Route::get('/index', 'MainController@index');
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -46,7 +48,7 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 |
 | 
 */
-Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
+Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){	
 	Route::get('/' . $GLOBALS['admin_url'], 'DashboardController@index');
 	Route::get('admin/users','UserController@index');
 	Route::get('admin/activeusers','UserController@activeUsers');
@@ -60,7 +62,8 @@ Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::get('admin/listsellers','UserController@listSellers');
 	Route::get('admin/store/categories','CategoryController@index');
 	Route::post('admin/store/categories/add','CategoryController@create');
-	Route::delete('admin/store/categories/{id}','CategoryController@destroy');
+	Route::delete('admin/store/categories/{id}','CategoryController@destroy');	
+	Route::get('shop', 'StoreController@index');
 	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
 	// Route::get('/sellers/listApproved/{page}','SellerController@listApproved');
