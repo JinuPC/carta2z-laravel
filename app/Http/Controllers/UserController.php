@@ -33,7 +33,8 @@ class UserController extends Controller {
 		$users = User::where('role', '<>', 'admin')->get();
 		return view('admin.users')
 			-> with('users', $users)
-			-> with('title', "Users");
+			-> with('title', "Users")
+			-> with('subtitle', 'All Users');
 	}
 
 	public function listSellers()
@@ -47,7 +48,8 @@ class UserController extends Controller {
 		$users = User::where('role', '=', 'seller')->get();
 		return view('admin.users')
 			-> with('users', $users)
-			-> with('title', "Users");
+			-> with('title', "Users")
+			-> with('subtitle', 'All Sellers');
 	}
 
 	public function listRetailers()
@@ -61,7 +63,8 @@ class UserController extends Controller {
 		$users = User::where('role', '=', 'retailer')->get();
 		return view('admin.users')
 			-> with('users', $users)
-			-> with('title', "Users");
+			-> with('title', "Users")
+			-> with('subtitle', 'All Retailers');
 	}
 
 
@@ -75,7 +78,8 @@ class UserController extends Controller {
 		$users = User::where('activated', '=', 1)->get();
 		return view('admin.activeusers')
 			-> with('users', $users)
-			-> with('title', "Active");
+			-> with('title', "Active")
+			-> with('subtitle', 'Active Users');
 	}
 
 	public function inactiveUsers()
@@ -88,7 +92,8 @@ class UserController extends Controller {
 		$users = User::where('activated', '=', 0)->get();
 		return view('admin.inactiveusers')
 			-> with('users', $users)
-			-> with('title', "Inactive");
+			-> with('title', "Inactive")
+			-> with('subtitle', 'Inactive Users');
 	}
 
 	public function verifiedUsers()
@@ -101,7 +106,8 @@ class UserController extends Controller {
 		$users = User::where('activated', '=', 10)->get();
 		return view('admin.verifiedusers')
 			-> with('users', $users)
-			-> with('title', "Verified");
+			-> with('title', "Verified")
+			-> with('subtitle', 'All verifyed users');
 	}
 
 	public function disapprove($id){

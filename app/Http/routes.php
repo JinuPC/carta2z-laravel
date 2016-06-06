@@ -28,7 +28,7 @@ Route::get('/api/csrf', function () {
 	return csrf_token();
 });
 Route::get('/', function () {
-	return view('welcome');
+	return view('store.master');
 });
 Route::get('/index', 'MainController@index');
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -58,6 +58,9 @@ Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::post('admin/users/verify/{id}','UserController@verify');
 	Route::get('admin/listretailers','UserController@listRetailers');
 	Route::get('admin/listsellers','UserController@listSellers');
+	Route::get('admin/store/categories','CategoryController@index');
+	Route::post('admin/store/categories/add','CategoryController@create');
+	Route::delete('admin/store/categories/{id}','CategoryController@destroy');
 	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
 	// Route::get('/sellers/listApproved/{page}','SellerController@listApproved');

@@ -39,23 +39,39 @@
               buttons: [
                 {
                   extend: "copy",
-                  className: "red"
+                  className: "btn btn-info",
+                  exportOptions: {
+                    columns:  ':not(:last-child)',
+                  }
                 },
                 {
                   extend: "csv",
-                  className: "green"
+                  className: "btn btn-danger",
+                  exportOptions: {
+                    columns:  ':not(:last-child)',
+                  }
                 },
                 {
                   extend: "excel",
-                  className: "red"
+                  className: "btn btn-info",
+                  exportOptions: {
+                    columns:  ':not(:last-child)',
+                  }
                 },
                 {
                   extend: "pdfHtml5",
-                  className: "green"
+                  className: "btn btn-danger",
+                  exportOptions: {
+                    columns:  ':not(:last-child)',
+                  }
                 },
                 {
                   extend: "print",
-                  className: "red"
+                  className: "btn btn-info",
+                  exportOptions: {
+                    columns:  ':not(:last-child)',
+                  }
+
                 },
               ],
               responsive: true

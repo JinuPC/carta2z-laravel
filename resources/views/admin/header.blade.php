@@ -42,6 +42,14 @@
                     </ul>
                   </li>
 
+
+                  <!-- Store -->
+                  <li><a><i class="fa fa-shopping-cart"></i> Store <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url('/').'/admin/store/categories'}}">Categories</a></li>                                            
+                    </ul>
+                  </li>
+
                   <!-- Products -->
                   <li><a><i class="fa fa-shopping-basket"></i> Products <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">

@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ucfirst(Auth::user()->role.' Dashboard')}} </title>
     @yield('css')
+    
   </head>
 
   <body class="nav-md ">
