@@ -262,7 +262,7 @@
                                 Our Dashboard carefully designed to help you in making the right judgements, take the right calls. 
                             </p>
                         </div>
-                        <p class="group"><a href="https://mobirise.com/bootstrap-template/" class="btn btn-info">LEARN MORE</a></p>
+                        <p class="group"><a href="#" class="btn btn-info">LEARN MORE</a></p>
                     </div>
                 </div>
             </div>

@@ -114,6 +114,14 @@ class Installtables extends Migration {
 			});
 		}
 
+		if( !(Schema::hasTable('categories')) ){
+			Schema::create('categories', function (Blueprint $table) {
+				$table->increments('id');				
+				$table->string('category_name');				
+				$table->timestamps();
+			});
+		}
+
 		if( !(Schema::hasTable('inventory')) ){
 			Schema::create('inventory', function (Blueprint $table) {
 				$table->bigIncrements('inventory_id');
@@ -156,6 +164,7 @@ class Installtables extends Migration {
 	public function down()
 	{
 		Schema::drop('options');
+		Schema::drop('categories');
 		Schema::drop('users');
 		Schema::drop('products');
 		Schema::drop('orders');
