@@ -3,15 +3,10 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
-#!/bin/bash
-# .openshift/action_hooks/deploy
 
-( cd $OPENSHIFT_REPO_DIR ; sudo composer self-update  )
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 set -e
-
-sudo /var/lib/openshift/575041c10c1e66b6aa0001d6/php/usr/bin/composer self-update
 
 echo 1>&2
 echo "Setting environment variables..." 1>&2
