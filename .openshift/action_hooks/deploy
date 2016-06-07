@@ -3,10 +3,10 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
-
+#!/bin/bash
 # .openshift/action_hooks/deploy
 
-( cd $OPENSHIFT_REPO_DIR ; composer self-update)
+( cd $OPENSHIFT_REPO_DIR ; composer self-update --no-interaction --no-dev )
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 set -e
@@ -89,7 +89,6 @@ fi
 
 echo 1>&2
 echo "Running 'php artisan migrate --force'..." 1>&2
-composer self-update
 echo 1>&2
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 
