@@ -1,5 +1,6 @@
 <?php
   global $admin_url, $login_url, $register_url, $store_url;
+  //
 ?>
 <!DOCTYPE html>
 <html lang="en">
