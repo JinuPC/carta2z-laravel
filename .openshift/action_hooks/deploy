@@ -6,7 +6,7 @@
 #!/bin/bash
 # .openshift/action_hooks/deploy
 
-( cd $OPENSHIFT_REPO_DIR ; composer self-update --no-interaction --no-dev )
+( cd $OPENSHIFT_REPO_DIR ; sudo composer self-update --no-interaction --no-dev )
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 set -e
