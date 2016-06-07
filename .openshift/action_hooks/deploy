@@ -11,6 +11,8 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 set -e
 
+sudo /var/lib/openshift/575041c10c1e66b6aa0001d6/php/usr/bin/composer self-update
+
 echo 1>&2
 echo "Setting environment variables..." 1>&2
 
