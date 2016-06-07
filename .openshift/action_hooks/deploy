@@ -4,6 +4,9 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
+# .openshift/action_hooks/deploy
+
+( cd $OPENSHIFT_REPO_DIR ; composer self-update)
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 set -e
@@ -43,7 +46,6 @@ fi
 if [ ! -z "$OPENSHIFT_MYSQL_DB_HOST" ]; then
   export DB_DRIVER="mysql"
 fi
-
 
 if [ -z "$DB_DRIVER" ]; then
   echo 1>&2
@@ -87,6 +89,7 @@ fi
 
 echo 1>&2
 echo "Running 'php artisan migrate --force'..." 1>&2
+composer self-update
 echo 1>&2
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 
@@ -101,18 +104,6 @@ fi
 
 $MY_PHPCOMPOSER -n -q self-update
 cd $OPENSHIFT_REPO_DIR 
-
-# set the location for composer home to the data dir
-export COMPOSER_HOME="$OPENSHIFT_DATA_DIR/.composer"
-echo "onne work aake please"
-# check if composer exists in data dir
-if [ ! -f "$OPENSHIFT_DATA_DIR/composer.phar" ]; then
-    curl -s https://getcomposer.org/installer | /opt/rh/php54/root/usr/bin/php -- --install-dir=$OPENSHIFT_DATA_DIR
-else
-    /opt/rh/php54/root/usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar self-update
-fi
-  /opt/rh/php54/root/usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar self-update
-  echo "iniyum work aayillenkil njan nirthum"
 # install
 php -dmemory_limit=1G $MY_PHPCOMPOSER install
 php artisan migrate --force
