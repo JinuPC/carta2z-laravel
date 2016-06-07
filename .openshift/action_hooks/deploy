@@ -97,7 +97,7 @@ if [ ! -f $MY_PHPCOMPOSER ]; then
     echo "Downloading composer..."
     php -r "readfile('https://getcomposer.org/installer');" | php 
 fi
-
+echo "checking jinu"
 $MY_PHPCOMPOSER -n -q self-update
 cd $OPENSHIFT_REPO_DIR 
 # install
