@@ -28,7 +28,8 @@ class StoreController extends Controller
 	{
 		
 		$categories = Category::where('parent_id','=','0')->with('children')->get();
-		return view('store.master')
+		return view('store.main')
+			-> with('title', 'Wholesale Shop')
 		 	-> with('categories', $categories);
 	}
 

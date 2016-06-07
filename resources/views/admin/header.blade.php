@@ -54,7 +54,7 @@
                   <li><a><i class="fa fa-shopping-basket"></i> Products <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{url('/').'/admin/products'}}">List Products</a></li>
-                      <li><a href="{{url('/').'/admin/addproduct'}}">Add Product</a></li>                      
+                      <li><a href="{{url('/').'/admin/products/add'}}">Add Product</a></li>                      
                     </ul>
                   </li>
 
@@ -157,9 +157,11 @@
               </div>             
 
               <ul class="nav navbar-nav navbar-right">
+
+                
                 <li class="">
                   <a href="javascript:;" class=" user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img class="green" src="{{asset('images/user.png') }}"><span class="blue">{{ucfirst(Auth::user()->firstname)}}&nbsp;{{ucfirst(Auth::user()->lastname)}}</span>
+                    <img class="green" src="{{asset('images/user.png') }}"><span style="font-size:20px;" class="blue">{{ucfirst(Auth::user()->firstname)}}&nbsp;{{ucfirst(Auth::user()->lastname)}}</span>
                     <span class=" fa blue fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -173,70 +175,14 @@
                   </ul>
                 </li>
 
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa blue fa-envelope-o"></i>
-                    <span class="badge bg-green">{{'count'}}</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
+                
+                <li class="">
+                  <a href="{{url('/')}}/shop" class=" user-profile " aria-expanded="false" style="font-size:30px;">
+                       <span style="font-size:20px;" class="blue"><i style="font-size:20px;" class="fa  fa-cart-arrow-down "></i> Shop</span>     
+            
+                  </a>                  
                 </li>
+
               </ul>
             </nav>
           </div>

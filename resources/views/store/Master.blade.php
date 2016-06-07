@@ -48,12 +48,12 @@
   <!-- wpf loader Two -->
     <div id="wpf-loader-two">          
       <div class="wpf-loader-two-inner">
-        <span>Loading</span>
+        <span>CartA2Z</span>
       </div>
     </div> 
     <!-- / wpf loader Two -->       
   <!-- SCROLL TOP BUTTON -->
-    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+    <a class="scrollToTop" href=""><i class="fa fa-chevron-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
 
 
@@ -118,7 +118,7 @@
               <!-- / logo  -->
                <!-- cart box -->
               <div class="aa-cartbox">
-                <a class="aa-cart-link" href="#">
+                <a class="aa-cart-link" href="">
                   <span class="fa fa-shopping-basket"></span>
                   <span class="aa-cart-title">YOUR CART</span>                  
                   @if(isset($cart_count))
@@ -128,20 +128,20 @@
                 <div class="aa-cartbox-summary">
                   <ul>
                     <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg" alt="img"></a>
+                      <a class="aa-cartbox-img" href=""><img src="img/woman-small-2.jpg" alt="img"></a>
                       <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
+                        <h4><a href="">Product Name</a></h4>
                         <p>1 x $250</p>
                       </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                      <a class="aa-remove-product" href=""><span class="fa fa-times"></span></a>
                     </li>
                     <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-1.jpg" alt="img"></a>
+                      <a class="aa-cartbox-img" href=""><img src="img/woman-small-1.jpg" alt="img"></a>
                       <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
+                        <h4><a href="">Product Name</a></h4>
                         <p>1 x $250</p>
                       </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                      <a class="aa-remove-product" href=""><span class="fa fa-times"></span></a>
                     </li>                    
                     <li>
                       <span class="aa-cartbox-total-title">
@@ -192,21 +192,20 @@
           <div class="navbar-collapse collapse">
             <!-- Left nav -->
             <ul class="nav navbar-nav">
-              <li><a href="{{url('/')}}/shop">Home</a></li>              
+              <li><a href="{{url('/')}}/shop">HOME</a></li>              
               @forelse ($categories as $category)
-                 <li><a href="#">{{$category->category_name}} <span class="caret"></span></a>
+                 <li><a href="">{{$category->category_name}} <span class="caret"></span></a>
                  @if($category->children()->count())
                  <?php $cat = $category['children']; ?>                
                   <ul class="dropdown-menu">                
                     @foreach ($cat as $sub)
-                      <li><a href="{{url('/').'/shop/category/'.$sub->id}}">{{$sub->category_name}}</a></li> 
+                      <li><a href="{{url('/').'/shop/category/'.$sub->category_name}}">{{$sub->category_name}}</a></li> 
                     @endforeach                
                   </ul>                
                  @endif                  
                 </li>  
                 @empty 
-              @endforelse
-                 
+              @endforelse                 
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -214,6 +213,113 @@
     </div>
   </section>
   <!-- / menu -->
+
+
+
+
+@yield('sidebar')
+@yield('content')
+
+
+
+
+
+
+
+    <!-- footer -->  
+  <footer id="aa-footer">
+    <!-- footer bottom -->
+    <div class="aa-footer-top">
+     <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+          <div class="aa-footer-top-area">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <div class="aa-footer-widget">
+                  <h3>Links</h3>
+                  <ul class="aa-footer-nav">
+                    <li><a href="{{url('/')}}">Home Page</a></li>
+                    <li><a href="{{url('/')}}/admin">Dashboard</a></li>
+                    <li><a href="">Docs</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Contact Us</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="aa-footer-widget">
+                  <div class="aa-footer-widget">
+                    <h3>Knowledge Base</h3>
+                    <ul class="aa-footer-nav">
+                      <li><a href="">Delivery</a></li>
+                      <li><a href="">Returns</a></li>
+                      <li><a href="">Services</a></li>
+                      <li><a href="">Discount</a></li>
+                      <li><a href="">Special Offer</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="aa-footer-widget">
+                  <div class="aa-footer-widget">
+                    <h3>Our Products</h3>
+                    <ul class="aa-footer-nav">
+                      <li><a href="">Ethino Soft</a></li>
+                      <li><a href="">UniMaket</a></li>
+                      <li><a href="">The StyleCart</a></li>
+                      <li><a href="">EduMobile</a></li>
+                      <li><a href="">CartA2Z</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="aa-footer-widget">
+                  <div class="aa-footer-widget">
+                    <h3>Contact Us</h3>
+                    <address>
+                      <p> 382, 2nd Cross,
+                      Bhanashankari 3rd Stage,</p>
+                      <p><span class="fa fa-phone"></span>(+91) 80 4222 7849</p>
+                      <p><span class="fa fa-envelope"></span>support@ethino.com</p>
+                    </address>
+                    <div class="aa-footer-social">
+                      <a href=""><span class="fa fa-facebook"></span></a>
+                      <a href=""><span class="fa fa-twitter"></span></a>
+                      <a href=""><span class="fa fa-google-plus"></span></a>
+                      <a href=""><span class="fa fa-youtube"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+    <!-- footer-bottom -->
+    <div class="aa-footer-bottom">
+      <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+          <div class="aa-footer-bottom-area">
+            <p>Copyright&copy; <a href="{{url('')}}">CartA2Z</a></p>
+            <div class="aa-footer-payment">
+              <span class="fa fa-cc-mastercard"></span>
+              <span class="fa fa-cc-visa"></span>
+              <span class="fa fa-paypal"></span>
+              <span class="fa fa-cc-discover"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </footer>
+  <!-- / footer -->
    
 
   <!-- jQuery library -->

@@ -55,7 +55,7 @@ class Installtables extends Migration {
 
 		if( !(Schema::hasTable('products')) ){
 			Schema::create('products', function (Blueprint $table) {
-				$table->bigIncrements('product_id');
+				$table->bigIncrements('id');
 				$table->bigInteger('manufacture_id');
 				$table->string('product_name');
 				$table->string('sku');
@@ -125,7 +125,7 @@ class Installtables extends Migration {
 
 		if( !(Schema::hasTable('inventory')) ){
 			Schema::create('inventory', function (Blueprint $table) {
-				$table->bigIncrements('inventory_id');
+				$table->bigIncrements('id');
 				$table->bigInteger('user_id');
 				$table->bigInteger('product_id');
 				$table->integer('quantity');

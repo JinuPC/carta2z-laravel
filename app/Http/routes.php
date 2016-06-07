@@ -63,6 +63,9 @@ Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::get('admin/store/categories','CategoryController@index');
 	Route::post('admin/store/categories/add','CategoryController@create');
 	Route::delete('admin/store/categories/{id}','CategoryController@destroy');	
+	Route::get('admin/products/list','ProductController@listProducts');
+	Route::get('admin/products/add','ProductController@getForm');
+
 	Route::get('shop', 'StoreController@index');
 	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
