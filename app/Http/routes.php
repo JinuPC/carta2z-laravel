@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -39,7 +41,7 @@ Route::get('/' . $register_url, 'Auth\AuthController@getRegister');
 Route::post('/' . $register_url, 'Auth\AuthController@postRegister');
 
 Route::get('/logout', 'Auth\AuthController@getLogout');
-
+Route::get('/information/create/ajax-state','CategoryController@listsub');
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +50,9 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 |
 | 
 */
-Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){	
+Route::group(array('prefix'=>'/','before'=>'auth'),function(){	
 	Route::get('/' . $GLOBALS['admin_url'], 'DashboardController@index');
+	//Users
 	Route::get('admin/users','UserController@index');
 	Route::get('admin/activeusers','UserController@activeUsers');
 	Route::get('admin/inactiveusers','UserController@inactiveUsers');
@@ -60,13 +63,29 @@ Route::group(array('prefix'=>'/','before'=>'auth|api.csrf'),function(){
 	Route::post('admin/users/verify/{id}','UserController@verify');
 	Route::get('admin/listretailers','UserController@listRetailers');
 	Route::get('admin/listsellers','UserController@listSellers');
+	//Categories
 	Route::get('admin/store/categories','CategoryController@index');
 	Route::post('admin/store/categories/add','CategoryController@create');
-	Route::delete('admin/store/categories/{id}','CategoryController@destroy');	
-	Route::get('admin/products/list','ProductController@listProducts');
+	Route::post('admin/store/categories/{id}','CategoryController@destroy');	
+	//Products
+	Route::get('admin/products','ProductController@listProducts');
+	Route::get('admin/products/showproducts','ProductController@show');
 	Route::get('admin/products/add','ProductController@getForm');
+	Route::post('admin/products/add','ProductController@newProduct');
+	//Inventory
+	Route::get('admin/inventory','InventoryController@index');
+	Route::get('admin/inventory/disabled','InventoryController@disabled');
+	Route::post('admin/inventory/update/{id}','InventoryController@update');
+
+
 
 	Route::get('shop', 'StoreController@index');
+	Route::get('shop/cart', 'CartController@index');
+	Route::get('shop/cart/add/{id}', 'CartController@add');
+	Route::get('shop/cart/remove/{id}', 'CartController@remove');
+	Route::get('shop/checkout', 'CartController@checkout');
+	Route::post('shop/checkout/{id}', 'CartController@postcheckout');
+
 	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
 	// Route::get('/sellers/listApproved/{page}','SellerController@listApproved');

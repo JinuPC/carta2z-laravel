@@ -28,7 +28,7 @@
               <!-- Starting table -->              
 
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
+                <div class="x_panel w3-hover-shadow">
                   <div class="x_title">
                     <h2> {{$subtitle}}  </h2>
                     

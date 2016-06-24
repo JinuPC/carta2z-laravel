@@ -62,12 +62,12 @@
 
 
                             {!! Form::open([
-                                'method' => 'DELETE',
+                                'method' => 'POST',
                                 'url' => ['admin/store/categories/'.$category->id]
                             ]) !!}
 
                               <!-- Small modal -->
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="{{'#modal'.$category->id}}"><span data-toggle="tooltip" title="Remove Category" class="glyphicon glyphicon-remove"></span></button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="{{'#modal'.$category->id}}"><span data-toggle="tooltip" title="Edit Category" class="glyphicon glyphicon-edit"></span></button>
 
                                 <div  class="modal  fade bs-example-modal-sm" id="{{'modal'.$category->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                                   <div class="modal-dialog modal-sm">
@@ -76,14 +76,15 @@
                                       <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                                         </button>
-                                        <h4 style="text-align:center;" class="modal-title red" id="myModalLabel2">Are you Sure ?</h4>
+                                        <h4 style="text-align:center;" class="modal-title red" id="myModalLabel2">Edit {{$category->category_name}}</h4>
+
                                       </div>
                                       <div  class="modal-body red">
-                                        <h4>Remove {{$category->category_name}} Permanaently?</h4>                                      
+                                        <h4><input type="name" name="category_name" value="{{$category->category_name}}"></h4>                                      
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger">Remove</button>
+                                        <button type="submit" class="btn btn-danger">Update</button>
                                       </div>
 
                                     </div>
@@ -111,28 +112,28 @@
 
 
                             {!! Form::open([
-                                'method' => 'DELETE',
+                                'method' => 'POST',
                                 'url' => ['admin/store/categories/'.$sub->id]
                             ]) !!}
 
                               <!-- Small modal -->
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="{{'#submodal'.$subindex}}"><span data-toggle="tooltip" title="Remove Category" class="glyphicon glyphicon-remove"></span></button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="{{'#submodal'.$sub->id}}"><span data-toggle="tooltip" title="Edit Category" class="glyphicon glyphicon-edit"></span></button>
 
-                                <div  class="modal  fade bs-example-modal-sm" id="{{'submodal'.$subindex}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div  class="modal  fade bs-example-modal-sm" id="{{'submodal'.$sub->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                                   <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
 
                                       <div class="modal-header">
                                         <button type="button" class="close red" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                                         </button>
-                                        <h4 style="text-align:center;" class="modal-title red" id="myModalLabel2">Are you Sure ?</h4>
+                                        <h4 style="text-align:center;" class="modal-title red" id="myModalLabel2">Edit {{$sub->category_name}}</h4>
                                       </div>
                                       <div class="modal-body red ">
-                                        <h4>Remove {{$sub->category_name}} Permanaently?</h4>                                      
+                                        <h4><input type="name" name="category_name" value="{{$sub->category_name}}"></h4>                                      
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger">Remove</button>
+                                        <button type="submit" class="btn btn-danger">Update</button>
                                       </div>
 
                                     </div>

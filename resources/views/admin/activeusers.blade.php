@@ -29,17 +29,16 @@
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2> {{$subtitle}} </h2>
+                  <div class="x_title w3-teal w3-card-24 w3-hover-shadow">
+                    <h1> {{$subtitle}} </h1>                    
                     
-                    <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     
                     <table id="datatable-buttons" class="table table-hover table-striped table-bordered">
                       <thead style="background-color:#3D4456; color:white;">
                         <tr >
-                          <th style="text-align:center;">No</th>
+                          <th class="w3-hover-shadow w3-teal" style="text-align:center;">No</th>
                           <th style="text-align:center;">FirstName</th>
                           <th style="text-align:center;">LastName</th>
                           <th style="text-align:center;">Email</th>

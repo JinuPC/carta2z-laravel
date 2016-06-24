@@ -25,6 +25,8 @@ class Install {
 		}
 		if( $result == 0 ){
 			add_user('admin', 'admin@admin.com', 'admin', 'admin', 'admin');
+			add_user('seller', 'seller@seller.com', 'seller', 'seller', 'seller');
+			add_user('retailer', 'retailer@retailer.com', 'retailer', 'retailer', 'retailer');
 			add_option('sitename', 'EMS');
 			add_option('adminurl', 'admin');
 			add_option('loginurl', 'login');

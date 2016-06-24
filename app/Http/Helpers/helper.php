@@ -25,7 +25,7 @@ function get_option( $option ) {
 	return $options;
 }
 
-function add_user( $username, $email, $password, $role = 'admin', $name = '', $status = 1 ) {
+function add_user( $username, $email, $password, $role = 'admin', $name = '', $status = 10 ) {
 	$options = new User;
 	$options->username	= $username;
 	$options->email		= $email;

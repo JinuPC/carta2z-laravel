@@ -55,6 +55,7 @@
                     <ul class="nav child_menu">
                       <li><a href="{{url('/').'/admin/products'}}">List Products</a></li>
                       <li><a href="{{url('/').'/admin/products/add'}}">Add Product</a></li>                      
+                      <li><a href="{{url('/').'/admin/products/showproducts'}}">Show Product</a></li>                      
                     </ul>
                   </li>
 
@@ -62,6 +63,7 @@
                   <li><a><i class="fa fa-table"></i> Inventory <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{url('/').'/admin/inventory'}}">List Inventory</a></li>
+                      <li><a href="{{url('/').'/admin/inventory/disabled'}}">Deactivated Inventory</a></li>
                     </ul>
                   </li>
 
@@ -149,8 +151,8 @@
         </div>
 
         <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
+        <div class="top_nav ">
+          <div class="nav_menu w3-card-24 w3-hover-shadow w3-light-grey ">
             <nav class="" role="navigation">
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"><strong  style="font-family: 'Oswald', sans-serif;">&nbsp;{{ isset($title) ? $title : 'Dashboard' }}</strong></i></a>

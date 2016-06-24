@@ -21,6 +21,43 @@
     <link rel="stylesheet" href="{{ asset('assets/mobirise-gallery/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
     <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet">
+    <style type="text/css">
+        input {
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            letter-spacing: 8px;
+            word-spacing: 16px;
+        }
+        ::-webkit-input-placeholder {
+           color: black;
+           text-align: center;
+           font-weight: bold;
+           font-size: 20px;
+           letter-spacing: 3px;
+            word-spacing: 9px;
+        }
+        select {
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            text-indent: 25%;
+            letter-spacing: 8px;
+            word-spacing: 16px;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+           color: black;  
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: black;  
+        }
+
+        :-ms-input-placeholder {  
+           color: black;  
+        }
+    </style>
 </head>
 
 <body>

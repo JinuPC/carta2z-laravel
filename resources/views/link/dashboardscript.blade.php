@@ -295,8 +295,8 @@
       var target = document.getElementById('foo'),
           gauge = new Gauge(target).setOptions(opts);
 
-      gauge.maxValue = 6000;
+      gauge.maxValue = 50;
       gauge.animationSpeed = 32;
-      gauge.set(3200);
+      gauge.set(25);
       gauge.setTextField(document.getElementById("gauge-text"));
     </script>

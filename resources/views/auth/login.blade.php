@@ -21,6 +21,35 @@
     <link rel="stylesheet" href="{{ asset('assets/mobirise-gallery/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
     <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet">
+    <style type="text/css">
+        input {
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            letter-spacing: 8px;
+            word-spacing: 16px;
+        }
+        ::-webkit-input-placeholder {
+           color: black;
+           text-align: center;
+           font-weight: bold;
+           font-size: 20px;
+           letter-spacing: 3px;
+            word-spacing: 9px;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+           color: black;  
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: black;  
+        }
+
+        :-ms-input-placeholder {  
+           color: black;  
+        }
+    </style>
 </head>
 
 <body>
@@ -99,10 +128,10 @@
                             <input type="password" class="form-control" name="password" placeholder="Password" required=""/> 
                         </div>
                         <div class="checkbox">
-                            <label style="color: white;"><input type="checkbox" value="remember" id="remember" name="remember" {{ Input::old('remember') ? 'checked' : '' }}> Remember Me For This Browser</label>
+                            <label style="color: white;"><input class="btn-primary" type="checkbox" value="remember" id="remember" name="remember" {{ Input::old('remember') ? 'checked' : '' }}> Remember Me For This Browser</label>
                         </div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button class="mbr-buttons__btn btn-lg btn btn-default btn-primary btn-block btn-info animated fadeInUp delay" type="submit">Sign In</button>   
+                        <button class="mbr-buttons__btn btn-lg btn btn-default btn-primary btn-block btn-info animated fadeInUp delay" type="submit">SIGN IN</button>   
                     </form>
                     </div>
                 </div></div>

@@ -37,6 +37,14 @@ class CategoryController extends Controller {
 		
 	}
 
+	public function listsub() 
+	{
+		Log::info("heloo its working");
+		$state_id = Input::get('state_id');
+	    $subcategories = Category::where('parent_id','=',$state_id)->get();
+	    return $subcategories;
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -124,17 +132,9 @@ class CategoryController extends Controller {
 			return View('admin.404');
 		}
 		$category = Category::findOrFail($id);
-		$ids_to_delete = $category->id;
-		
-		if($category->parent_id == 0) {
-			Session::flash('flash_sucess', $ids_to_delete.' has been deleted.' );
-		 	
-		 	DB::table('categories')->where('parent_id', $ids_to_delete)->delete(); 
-		 	
-		}
-		
-		$category->delete();
-		//Session::flash('flash_sucess', $category->category_name.' has been deleted.' );
+		$category->category_name = Input::get('category_name');
+		$category->save();		
+		Session::flash('flash_sucess', 'Changes Sucessfully updated.' );
 		return redirect('admin/store/categories');
 	}
 

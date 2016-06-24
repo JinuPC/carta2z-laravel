@@ -10,6 +10,8 @@
     <link href="{{asset('dashboard/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('dashboard/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('dashboard/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('dashboard/vendors/w3/style.css') }}">
+    
 
     <!-- Custom Theme Style -->
     <link href="{{asset('dashboard/build/css/custom.min.css')}}" rel="stylesheet">

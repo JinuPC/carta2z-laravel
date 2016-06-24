@@ -1,0 +1,9 @@
+<?php namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Order_log extends Model {
+
+	protected $table = 'orderlog';
+
+}

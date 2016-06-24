@@ -21,6 +21,23 @@
     <link rel="stylesheet" href="{{ asset('assets/mobirise-gallery/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
     <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet">
+    <style type="text/css">
+        ::-webkit-input-placeholder {
+           color: black;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+           color: black;  
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: black;  
+        }
+
+        :-ms-input-placeholder {  
+           color: black;  
+        }
+    </style>
 </head>
 
 <body>

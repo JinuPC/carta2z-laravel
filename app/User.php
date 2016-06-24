@@ -32,4 +32,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 	protected $primaryKey='user_id';
 
+	public function inventories()
+    {
+        return $this->hasMany('Inventory');
+    }
+    public function carts()
+    {
+    	return $this->hasMany('Cart');
+    }
+
+
 }
