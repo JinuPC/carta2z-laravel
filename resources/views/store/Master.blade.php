@@ -171,7 +171,7 @@
                  <?php $cat = $category['children']; ?>                
                   <ul class="dropdown-menu">                
                     @foreach ($cat as $sub)
-                      <li><a href="{{url('/').'/shop/category/'.$sub->category_name}}">{{$sub->category_name}}</a></li> 
+                      <li><a href="{{url('/').'/shop/category/'.$sub->id}}">{{$sub->category_name}}</a></li> 
                     @endforeach                
                   </ul>                
                  @endif                  

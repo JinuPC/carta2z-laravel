@@ -125,11 +125,12 @@ class CartController extends Controller {
 		$user->save();
 
 		//Retrive Products and Make Order
-		$carts = Cart::where('user_id','=',$id)->get();
+		$carts = Cart::where('user_id','=',$id)->get();		
 		foreach ($carts as $cart) {
 			$inventory = Inventory::find($cart->inventory_id);
 			if($inventory->stock < $cart->count)
 			{
+				$deletedCart = Cart::find($cart->id)->delete();
 				Session::flash('flash_warning',$cart->title.' is out of stock please try later');
 				return redirect('shop/cart');
 			}
@@ -150,6 +151,9 @@ class CartController extends Controller {
 				$order->customer_orderid = $id;
 				$order->status ="order Created";
 				$order->quantity = $cart->count;
+				$order->price = $cart->count * $cart->price;
+				$order->deliverycharge = $cart->count * 100;
+				$order->total_price = $order->price + $order->deliverycharge;
 				$order->payment_details = "cod";
 				$order->save();
 

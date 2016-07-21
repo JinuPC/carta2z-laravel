@@ -1,6 +1,6 @@
 <?php
   global $admin_url, $login_url, $register_url;
-  //$role = Auth::user()->role;
+  $role = Auth::user()->role;
 
 ?>
 

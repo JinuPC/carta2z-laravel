@@ -29,7 +29,7 @@
                 <ul class="nav side-menu">
                                     <!-- Dashboad -->
                   <li><a href="{{url('/').'/admin'}}"><i class="fa fa-tachometer"></i>Dashboard</a></li>
-
+                  @if($role == "admin")
                   <!-- Users -->
                   <li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -41,14 +41,16 @@
                       <li><a href="{{url('/').'/admin/listretailers'}}">Retailers</a></li>                      
                     </ul>
                   </li>
+                  @endif
 
-
+                  @if($role == "admin")
                   <!-- Store -->
                   <li><a><i class="fa fa-shopping-cart"></i> Store <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{url('/').'/admin/store/categories'}}">Categories</a></li>                                            
                     </ul>
                   </li>
+                  @endif
 
                   <!-- Products -->
                   <li><a><i class="fa fa-shopping-basket"></i> Products <span class="fa fa-chevron-down"></span></a>
@@ -66,21 +68,35 @@
                       <li><a href="{{url('/').'/admin/inventory/disabled'}}">Deactivated Inventory</a></li>
                     </ul>
                   </li>
-
+                  
                   <!-- Orders -->
                   <li><a><i class="fa fa-archive"></i> Orders <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{url('/').'/admin/orders'}}">New Orders</a></li>
-                      <li><a href="{{url('/').'/admin/processingorders'}}">Processing</a></li>
-                      <li><a href="{{url('/').'/admin/finishedorders'}}">Finished</a></li>                      
+                      <li><a href="{{url('/').'/admin/orders/processing'}}">Processing</a></li>
+                      <li><a href="{{url('/').'/admin/orders/delivered'}}">Finished</a></li>
+                      <li><a href="{{url('/').'/admin/orders/returned'}}">Returned</a></li>
                     </ul>
                   </li>
+                  @if($role != "seller")
+                  <!-- Purchase -->
+                  <li><a><i class="fa fa-credit-card"></i> Purchases <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url('/').'/admin/purchases'}}">New Purchase</a></li>
+                      <li><a href="{{url('/').'/admin/purchases/finished'}}">Finished</a></li>
+                      <li><a href="{{url('/').'/admin/purchases/returned'}}">Returned</a></li>
+                    </ul>
+                  </li>
+                  @endif
 
                   <!-- Unimarket -->
                   <li><a><i class="fa fa-clone"></i>UniMarket <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                      <li><a href="#">Stores</a></li>
+                      <li><a href="#">Flipkart</a></li>
+                      <li><a href="#">Snapdeal</a></li>
+                      <li><a href="#">Paytm</a></li>
+                      <li><a href="#">Amazon</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -88,43 +104,19 @@
               <div class="menu_section">
                 <h3>Live On</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bug"></i> Predictor <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
+                      <li><a href="#">New Trends</a></li>
+                      <li><a href="#">CartA2Z salehub</a></li>              
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
+                  <li><a><i class="fa fa-windows"></i> Extras </a>
+                    
                   </li>
-                  <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a>
-                        <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a>
-                            </li>
-                            <li><a href="#level2_1">Level Two</a>
-                            </li>
-                            <li><a href="#level2_2">Level Two</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a>
-                        </li>
-                    </ul>
+                  <li><a><i class="fa fa-sitemap"></i> Mail Feature </a>
+                    
                   </li>                  
-                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Intelligent C<span class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -142,7 +134,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <a href="{{url('/')}}" data-toggle="tooltip" data-placement="top" title="Logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>

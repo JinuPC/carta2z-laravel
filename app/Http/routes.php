@@ -78,44 +78,30 @@ Route::group(array('prefix'=>'/','before'=>'auth'),function(){
 	Route::post('admin/inventory/update/{id}','InventoryController@update');
 
 
-
+	//Store
 	Route::get('shop', 'StoreController@index');
+	Route::get('shop/category/{id}', 'StoreController@category');
 	Route::get('shop/cart', 'CartController@index');
 	Route::get('shop/cart/add/{id}', 'CartController@add');
 	Route::get('shop/cart/remove/{id}', 'CartController@remove');
 	Route::get('shop/checkout', 'CartController@checkout');
 	Route::post('shop/checkout/{id}', 'CartController@postcheckout');
 
-	// Route::post('/profile/edit/{id}','ProfileController@edit');
 
-	// Route::get('/sellers/listApproved/{page}','SellerController@listApproved');
-	// Route::get('/sellers/listPending/{page}','SellerController@listPending');
-	// Route::post('/sellers/approveOne/{id}','SellerController@approveOne');
-	// Route::post('/sellers/denyOne/{id}','SellerController@denyOne');
-	// Route::post('/sellers/create','SellerController@create');
-	// Route::post('/sellers/edit/{id}','SellerController@edit');
-	// Route::delete('/sellers/{id}','SellerController@delete');
+	//Order
+	Route::get('admin/orders','OrderController@index');
+	Route::get('admin/orders/processing','OrderController@processing');
+	Route::get('admin/orders/delivered','OrderController@delivered');
+	Route::get('admin/orders/returned','OrderController@returned');
+	Route::get('admin/orders/view/{id}','OrderController@view');
+	Route::get('admin/purchase/view/{id}','OrderController@view');
+	Route::post('admin/order/update/{id}','OrderController@update');
 
-	// //Route::get('/customers/listAll/{page}','CustomerController@listAll');
-	// //Route::post('/customers/create','CustomerController@create');
-	// //Route::post('/customers/edit/{id}','CustomerController@edit');
-	// //Route::delete('/customers/{id}','CustomerController@delete');
-
-	// Route::get('/stores/listStores/{page}','StoreController@listStores');
-	// Route::get('/stores/listChannel','StoreController@listChannel');
-	// Route::post('/stores/edit/{id}','StoreController@saveEdit');
-	// Route::post('/stores/create','StoreController@create');
-	// Route::delete('/stores/{key}','StoreController@delete');
-
-	// Route::get('/posts/listAll/{page}','PostController@listAll');
-	// Route::get('/posts/listApproved/{page}','PostController@listApproved');
-	// Route::get('/posts/listPending/{page}','PostController@listPending');
-	// Route::get('/posts/{id}','PostController@view');
-	// Route::post('/posts/approveOne/{id}','PostController@approveOne');
-	// Route::post('/posts/denyOne/{id}','PostController@denyOne');
-	// Route::post('/posts/create','PostController@create');
-	// Route::post('/posts/edit/{id}','PostController@edit');
-	// Route::delete('/posts/{id}','PostController@delete');
+	//Purchases
+	Route::get('admin/purchases','PurchaseController@index');
+	Route::get('admin/purchases/finished','PurchaseController@finished');
+	Route::get('admin/purchases/returned','PurchaseController@returned');
+	
 });
 
 

@@ -160,6 +160,11 @@ class Installtables extends Migration {
 				$table->integer('quantity');
 				$table->integer('service_tax');
 				$table->integer('vat_tax');
+				$table->integer('count');
+				$table->integer('price');
+				$table->integer('deliverycharge');
+				$table->integer('total_price');
+				$table->integer('finished')->default(0);
 				$table->string('cst_tax');
 				$table->string('manifest');
 				$table->mediumText('Payment_details');

@@ -50,5 +50,16 @@ class StoreController extends Controller
 		 	-> with('mens', $inventory);
 	}
 
+	public function category()
+	{
+		$cart_count = Cart::where('user_id', '=', Auth::user()->user_id)->count();
+		$categories = Category::where('parent_id','=','0')->with('children')->get();
+		return view('store.products')
+			-> with('title', 'Wholesale Shop')
+		 	-> with('categories', $categories)
+		 	-> with('cart_count', $cart_count);
+
+	}
+
 	
 } 
