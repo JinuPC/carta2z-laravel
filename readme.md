@@ -1,3 +1,2 @@
-# tasko
-A simple todo applicaton
-starting soon
+# CartA2Z a Distribution System using laravel
+wiil update shortly
